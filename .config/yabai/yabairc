@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# space 配置
+# yabai -m config layout bsp
+yabai -m config layout float
+yabai -m config --space 1 layout float
+yabai -m config --space 2 layout float
+
+# padding
+padding=8
+window_padding=8
+yabai -m config \
+ 	top_padding     $padding \
+ 	bottom_padding  $padding \
+ 	left_padding    $padding \
+ 	right_padding   $padding \
+ 	window_gap      $window_padding
+
+
+# TODO: mouse support
+# https://github.com/koekeishiya/yabai/wiki/Configuration#mouse-support
+
+yabai -m config window_shadow on
+yabai -m config window_opacity off
+yabai -m config active_window_opacity 1.0
+# yabai -m config normal_window_opacity 0.8
+
+# menu bar
+# yabai -m config menubar_opacity 0.0
+yabai -m config external_bar all:0:0
+
+# ignored apps
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^系統設定$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Monitor$" manage=off
+yabai -m rule --add app="^活動監視器$" manage=off
+yabai -m rule --add app="^Marta$" manage=off
+yabai -m rule --add app="^fast-done$" manage=off
+yabai -m rule --add app="^Task Manager$" manage=off
+
+
+echo "yabai configuration loaded.."

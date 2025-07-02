@@ -1,19 +1,20 @@
+#!/opt/homebrew/bin/fish
+
 if status is-login
+    source $HOME/dotfiles/.config/fish/config_secret.fish
+
     # ----------------------------- tools ----------------------------- #
-
-    source ~/.config/fish/config_secret.fish
-
     eval "$(/opt/homebrew/bin/brew shellenv)"
     set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
 
     # TODO: replace to fish version
     # bindkey '^I^I' autosuggest-accept
-    
+
     # Yazi (file manager)
     function y
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         yazi $argv --cwd-file="$tmp"
-        if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
             builtin cd -- "$cwd"
         end
         rm -f -- "$tmp"
@@ -37,10 +38,10 @@ if status is-login
     # set NVM_DIR "$HOME/.nvm"
     # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-    
+
     set ASEPRITE_HOME "$HOME/tools/aseprite"
 
-    set JAVA_HOME "$(/usr/libexec/java_home)"
+    # set JAVA_HOME "$(/usr/libexec/java_home)"
 
     set PATH $PATH ~/go/bin
 
@@ -48,10 +49,9 @@ if status is-login
 
     command -v pyenv >/dev/null || set PATH $PYENV_ROOT/bin $PATH
     eval "$(pyenv init -)"
-    
+
     # export DOTNET_ROOT /usr/local/share/dotnet
 end
-
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -64,6 +64,7 @@ if status is-interactive
     alias ipy="ipython"
     alias lg="lazygit"
     alias pping="prettyping"
+
     alias vercel="vercel -t $VERCEL_KEY"
 
     # --- git alias --- #
@@ -81,7 +82,7 @@ if status is-interactive
     alias gi='git init'
     alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
     alias gm='git merge'
-    alias gn='git checkout -b'  # new branch
+    alias gn='git checkout -b' # new branch
     alias gp='git push'
     alias gpf='git push -f'
     alias gr='git reset'
@@ -92,4 +93,3 @@ if status is-interactive
     # use starship for prompt customize
     starship init fish | source
 end
-

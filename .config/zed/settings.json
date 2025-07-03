@@ -1,0 +1,328 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+    // --------------------------- appearance --------------------------- //
+    "edit_predictions": {
+        "mode": "subtle",
+        "copilot": {
+            "proxy": null,
+            "proxy_no_verify": null
+        },
+        "enabled_in_text_threads": false
+    },
+    "icon_theme": "Symbols",
+    "show_edit_predictions": true,
+    "buffer_font_size": 11,
+
+    // // jetbrains settings
+    // "buffer_font_family": "JetBrainsMono Nerd Font",
+    // "buffer_font_fallbacks": ["CaskaydiaCove Nerd Font"],
+    // "buffer_font_weight": 500,
+    // "buffer_font_features": {
+    //     "calt": true,
+    //     // "ss01": true,
+    //     "ss02": true,
+    //     "zero": true
+    // },
+
+    // // cascadia code settings
+    // "buffer_font_family": "CaskaydiaCove Nerd Font",
+    // "buffer_font_features": {
+    //     "calt": true,
+    //     "ss01": true,
+    //     "ss02": true,
+    //     "ss03": true,
+    //     "ss20": true,
+    //     "zero": true
+    // },
+
+    // 0xProto settings
+    "buffer_font_family": "0xProto Nerd Font",
+    "buffer_font_features": {
+        "ss01": true
+    },
+
+    // ui
+    "agent_font_size": 13,
+    "ui_font_size": 12,
+    "ui_font_family": "JetBrains Mono",
+    "ui_font_weight": 600,
+    "theme": "Dayfox",
+    "tab_bar": {
+        "show_nav_history_buttons": false
+    },
+    "scrollbar": {
+        "diagnostics": "all",
+        "git_diff": true,
+        "show": "auto"
+    },
+    "tabs": {
+        // "git_status": true
+    },
+    "soft_wrap": "editor_width",
+    "show_whitespaces": "boundary",
+    "wrap_guides": [88],
+    "indent_guides": {
+        "active_line_width": 2
+    },
+    "project_panel": {
+        "indent_size": 16
+    },
+    "relative_line_numbers": true,
+    "experimental.theme_overrides": {
+        "syntax": {
+            "comment": {
+                "font_style": "italic"
+            },
+            "keyword": {
+                "font_style": "italic",
+                "font_weight": 600
+            },
+            "type": {
+                "font_weight": 600
+            },
+            "variable.special": {
+                "font_style": "italic",
+                "font_weight": 600
+            }
+        }
+        // "predictive": "#666" // change suggestion color
+    },
+
+    // ------------------------------ editor ------------------------------ //
+    "vim_mode": true,
+    // "vertical_scroll_margin": 999, // keep cursor at center
+    "tab_size": 4,
+    "hard_tabs": false,
+    "show_completions_on_input": true,
+    "always_treat_brackets_as_autoclosed": true,
+    "file_types": {
+        "XML": ["csproj", "vcxproj"],
+        "shell": ["*rc"]
+    },
+
+    // ------------------------ formatter & linter ------------------------ //
+    "format_on_save": "off",
+    "languages": {
+        "Python": {
+            "language_servers": ["pyright", "ruff", "ty", "!pyrefly"],
+            "formatter": [
+                {
+                    "code_actions": {
+                        "source.organizeImports.ruff": true,
+                        "source.check.ruff": true
+                        // "source.fixAll.ruff": true
+                    }
+                },
+                {
+                    "language_server": {
+                        "name": "ruff"
+                    }
+                }
+            ],
+            "format_on_save": "on"
+        },
+        "C++": {
+            "format_on_save": {
+                "external": {
+                    "command": "clang-format",
+                    "arguments": [
+                        "--assume-filename={buffer_path}",
+                        "--style={ BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4 }"
+                    ]
+                }
+            }
+        },
+        "JavaScript": {
+            "formatter": {
+                "external": {
+                    "command": "prettier",
+                    "arguments": [
+                        "--stdin-filepath",
+                        "{buffer_path}",
+                        "--tab-width",
+                        "4"
+                    ]
+                }
+            }
+        },
+        "Make": {
+            "hard_tabs": true
+        },
+        "Markdown": {
+            "show_edit_predictions": false,
+            "format_on_save": "on"
+        },
+        "Lua": {
+            "format_on_save": "on"
+        },
+        "Typst": {
+            "formatter": {
+                "external": {
+                    "command": "typstyle",
+                    "arguments": []
+                }
+            },
+            "format_on_save": "on"
+        }
+    },
+    "lsp": {
+        "ruff": {
+            "initialization_options": {
+                "settings": {
+                    "showSyntaxErrors": true,
+                    "lineLength": 88,
+                    "lint": {
+                        "select": ["ALL"],
+                        "extendSelect": ["I"]
+                        // "ignore": ["F401"]
+                    }
+                }
+            }
+        },
+        "pyright": {
+            "settings": {
+                "python.analysis": {
+                    "diagnosticMode": "workspace",
+                    "typeCheckingMode": "strict",
+                    "ignore": [""]
+                }
+            },
+            "python": {
+                "pythonPath": ["./.venv/bin/python", "~/.pyenv/shims/python"]
+            }
+        },
+        "omnisharp": {
+            "settings": {
+                "csharp.analysis": {
+                    // "diagnosticMode": "off",
+                    // "typeCheckingMode": "off"
+                }
+            }
+        },
+        "pyrefly": {
+            "settings": {
+                "python": {
+                    "pythonPath": ".venv/bin/python"
+                },
+                "pyrefly": {
+                    "python_interpreter": ".venv/bin/python"
+                }
+            }
+        },
+        "ty": {
+            "binary": {
+                "path": "/Users/chunhua/.local/bin/ty",
+                "arguments": ["server"]
+            }
+        },
+        "tinymist": {
+            "settings": {
+                "exportPdf": "onSave",
+                "outputPath": "$root/$name"
+            }
+        }
+    },
+
+    // ---------------------------- terminal ---------------------------- //
+    "terminal": {
+        "shell": {
+            "program": "/opt/homebrew/bin/fish"
+        },
+        "blinking": "off",
+        "env": {
+            "PYTHONPATH": "."
+        }
+    },
+
+    // ---------------------------- remote ---------------------------- //
+    "ssh_connections": [
+        {
+            "host": "10.19.16.10",
+            "username": "nvh",
+            "projects": [
+                {
+                    "paths": ["/home/nvh/gitlab/qapi_v4"]
+                },
+                {
+                    "paths": ["~/gitlab/nasx86"]
+                },
+                {
+                    "paths": ["~/gitlab/nasx86/NasLib/network_management"]
+                },
+                {
+                    "paths": ["~/gitlab/qts_nvs"]
+                }
+            ]
+        }
+    ],
+
+    // ---------------------------- AI ---------------------------- //
+    "language_models": {
+        "open_router": {
+            "version": "1",
+            "api_url": "https://openrouter.ai/api/v1",
+            "available_models": [
+                {
+                    "display_name": "Deepseek R1 0528 Qwen3 (free) (self specified)",
+                    "name": "deepseek/deepseek-r1-0528-qwen3-8b:free",
+                    "max_tokens": 131072
+                }
+            ]
+        }
+    },
+    "agent": {
+        "profiles": {
+            "ask": {
+                "name": "Ask",
+                "tools": {
+                    "contents": true,
+                    "diagnostics": true,
+                    "fetch": true,
+                    "list_directory": true,
+                    "now": true,
+                    "find_path": true,
+                    "read_file": true,
+                    "open": true,
+                    "grep": true,
+                    "thinking": true,
+                    "web_search": true
+                },
+                "enable_all_context_servers": false,
+                "context_servers": {
+                    "mcp-server-github": {
+                        "tools": {
+                            "assign_copilot_to_issue": false
+                        }
+                    }
+                }
+            }
+        },
+        "inline_assistant_model": {
+            "provider": "copilot_chat",
+            "model": "claude-sonnet-4"
+        },
+        "default_profile": "write",
+        "default_model": {
+            "provider": "copilot_chat",
+            "model": "claude-sonnet-4"
+        },
+        "version": "2"
+    },
+    "features": {
+        "edit_prediction_provider": "zed"
+    },
+
+    // ---------------------------- others ---------------------------- //
+    // avoid zed to collect data
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    }
+}

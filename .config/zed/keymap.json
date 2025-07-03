@@ -1,0 +1,48 @@
+[
+    {
+        "bindings": {
+            "cmd-Z u +": "zed::IncreaseUiFontSize",
+            "cmd-Z u -": "zed::DecreaseUiFontSize",
+            "cmd-Z u 0": "zed::ResetUiFontSize",
+            "cmd-Z b +": "zed::IncreaseBufferFontSize",
+            "cmd-Z b -": "zed::DecreaseBufferFontSize",
+            "cmd-Z b 0": "zed::ResetBufferFontSize",
+            // "cmd-Z a +": "zed::IncreaseAgentFontSize",
+            // "cmd-Z a -": "zed::DecreaseAgentFontSize",
+            // "cmd-Z a 0": "zed::ResetAgentFontSize",
+            "cmd-0": ["workspace::SendKeystrokes", "cmd-Z u 0 cmd-Z b 0"],
+            "cmd-=": ["workspace::SendKeystrokes", "cmd-Z u + cmd-Z b +"],
+            "cmd-+": ["workspace::SendKeystrokes", "cmd-Z u + cmd-Z b +"],
+            "cmd--": ["workspace::SendKeystrokes", "cmd-Z u - cmd-Z b -"],
+            "cmd-shift-g": "git_panel::ToggleFocus",
+
+            // conflict with mac window control
+            "ctrl-alt-left": null,
+            "ctrl-alt-right": null,
+            "ctrl-alt-enter": null,
+
+            "alt-h": "workspace::ActivatePaneLeft",
+            "alt-j": "workspace::ActivatePaneDown",
+            "alt-k": "workspace::ActivatePaneUp",
+            "alt-l": "workspace::ActivatePaneRight",
+            "alt-shift-h": [
+                "workspace::MoveItemToPaneInDirection",
+                { "direction": "left" }
+            ],
+            "alt-shift-j": [
+                "workspace::MoveItemToPaneInDirection",
+                { "direction": "down" }
+            ],
+            "alt-shift-k": [
+                "workspace::MoveItemToPaneInDirection",
+                { "direction": "up" }
+            ],
+            "alt-shift-l": [
+                "workspace::MoveItemToPaneInDirection",
+                { "direction": "right" }
+            ],
+
+            "ctrl-escape": "terminal_panel::ToggleFocus"
+        }
+    }
+]

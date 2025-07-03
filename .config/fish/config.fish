@@ -64,6 +64,7 @@ if status is-interactive
     alias ipy="ipython"
     alias lg="lazygit"
     alias pping="prettyping"
+    alias zlj="zellij"
 
     alias vercel="vercel -t $VERCEL_KEY"
 

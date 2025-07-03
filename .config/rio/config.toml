@@ -1,0 +1,21 @@
+line-height = 1.2
+hide-cursor-when-typing = true
+padding-x = 5
+padding-y = [5, 5]
+
+[window]
+decorations = "Transparent"
+opacity = 0.5
+blur = true
+
+[fonts]
+size = 12
+family = "0xProto Nerd Font"
+
+[shell]
+program = "/opt/homebrew/bin/fish"
+args = ["--login"]
+
+[developer]
+log-level = "INFO"
+enable-log-file = true

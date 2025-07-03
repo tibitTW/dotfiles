@@ -1,2 +1,3 @@
 .zshrc_secret
 .config/fish/config_secret.fish
+.config/rio/log/

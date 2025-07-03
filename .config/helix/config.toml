@@ -1,0 +1,11 @@
+theme = "kanagawa"
+
+[editor]
+line-number = "relative"
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "underline"
+
+[editor.whitespace]
+render = "all"

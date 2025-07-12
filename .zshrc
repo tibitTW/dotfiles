@@ -46,7 +46,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export ASEPRITE_HOME="$HOME/tools/aseprite"
 
-export JAVA_HOME="$(/usr/libexec/java_home)"
+# export JAVA_HOME="$(/usr/libexec/java_home)"
 
 export PATH=$PATH:~/go/bin
 

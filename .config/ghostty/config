@@ -1,0 +1,24 @@
+font-family = "0xProto Nerd Font"
+
+window-padding-x = 8
+window-padding-y = 4
+
+background-opacity = 0.6
+background-blur = true
+
+# 
+window-theme = dark
+theme = dracula
+# theme = light:rose-pine-dawn,dark:rose-pine
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+
+command = /opt/homebrew/bin/fish --login --interactive
+
+shell-integration = fish
+macos-option-as-alt = true
+
+macos-icon = holographic
+

@@ -16,20 +16,20 @@
         },
         "enabled_in_text_threads": false
     },
-    "icon_theme": "Symbols",
+    "icon_theme": "Symbols Icon Theme",
     "show_edit_predictions": true,
     "buffer_font_size": 11,
 
-    // // jetbrains settings
-    // "buffer_font_family": "JetBrainsMono Nerd Font",
-    // "buffer_font_fallbacks": ["CaskaydiaCove Nerd Font"],
-    // "buffer_font_weight": 500,
-    // "buffer_font_features": {
-    //     "calt": true,
-    //     // "ss01": true,
-    //     "ss02": true,
-    //     "zero": true
-    // },
+    // jetbrains settings
+    "buffer_font_family": "JetBrainsMono Nerd Font",
+    "buffer_font_fallbacks": ["CaskaydiaCove Nerd Font"],
+    "buffer_font_weight": 500,
+    "buffer_font_features": {
+        "calt": true,
+        // "ss01": true,
+        "ss02": true,
+        "zero": true
+    },
 
     // // cascadia code settings
     // "buffer_font_family": "CaskaydiaCove Nerd Font",
@@ -42,18 +42,18 @@
     //     "zero": true
     // },
 
-    // 0xProto settings
-    "buffer_font_family": "0xProto Nerd Font",
-    "buffer_font_features": {
-        "ss01": true
-    },
+    // // 0xProto settings
+    // "buffer_font_family": "0xProto Nerd Font",
+    // "buffer_font_features": {
+    //     "ss01": true
+    // },
 
     // ui
-    "agent_font_size": 13,
+    "agent_font_size": 14,
     "ui_font_size": 12,
     "ui_font_family": "JetBrains Mono",
     "ui_font_weight": 600,
-    "theme": "Dayfox",
+    "theme": "Dracula",
     "tab_bar": {
         "show_nav_history_buttons": false
     },
@@ -97,6 +97,7 @@
 
     // ------------------------------ editor ------------------------------ //
     "vim_mode": true,
+    "helix_mode": true,
     // "vertical_scroll_margin": 999, // keep cursor at center
     "tab_size": 4,
     "hard_tabs": false,
@@ -156,8 +157,8 @@
             "hard_tabs": true
         },
         "Markdown": {
-            "show_edit_predictions": false,
-            "format_on_save": "on"
+            "show_edit_predictions": false
+            // "format_on_save": "on"
         },
         "Lua": {
             "format_on_save": "on"
@@ -192,10 +193,13 @@
                     "diagnosticMode": "workspace",
                     "typeCheckingMode": "strict",
                     "ignore": [""]
+                },
+                "python": {
+                    "pythonPath": [
+                        "./.venv/bin/python",
+                        "~/.pyenv/shims/python"
+                    ]
                 }
-            },
-            "python": {
-                "pythonPath": ["./.venv/bin/python", "~/.pyenv/shims/python"]
             }
         },
         "omnisharp": {
@@ -232,9 +236,9 @@
 
     // ---------------------------- terminal ---------------------------- //
     "terminal": {
-        "shell": {
-            "program": "/opt/homebrew/bin/fish"
-        },
+        // "shell": {
+        //     "program": "/opt/homebrew/bin/fish"
+        // },
         "blinking": "off",
         "env": {
             "PYTHONPATH": "."
@@ -266,7 +270,6 @@
     // ---------------------------- AI ---------------------------- //
     "language_models": {
         "open_router": {
-            "version": "1",
             "api_url": "https://openrouter.ai/api/v1",
             "available_models": [
                 {
@@ -305,15 +308,14 @@
             }
         },
         "inline_assistant_model": {
-            "provider": "copilot_chat",
-            "model": "claude-sonnet-4"
+            "provider": "openrouter",
+            "model": "anthropic/claude-sonnet-4"
         },
-        "default_profile": "write",
+        "default_profile": "ask",
         "default_model": {
             "provider": "copilot_chat",
             "model": "claude-sonnet-4"
-        },
-        "version": "2"
+        }
     },
     "features": {
         "edit_prediction_provider": "zed"
@@ -324,5 +326,12 @@
     "telemetry": {
         "diagnostics": false,
         "metrics": false
+    },
+    "command_aliases": {
+        "lsplg": "dev::openLanguageServerLogs",
+        "lg": "zed::openLog"
+    },
+    "active_pane_modifiers": {
+        "border_size": 1
     }
 }

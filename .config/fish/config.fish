@@ -7,6 +7,8 @@ if status is-login
     eval "$(/opt/homebrew/bin/brew shellenv)"
     set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
 
+    set -gx EDITOR hx
+
     # TODO: replace to fish version
     # bindkey '^I^I' autosuggest-accept
 
@@ -56,6 +58,7 @@ end
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
+    alias python="python3"
     alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
     alias l="ls"
     alias ll="eza --color=always --long --git --icons=always --all"

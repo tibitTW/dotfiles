@@ -1,16 +1,23 @@
 line-height = 1.2
-hide-cursor-when-typing = true
-padding-x = 5
-padding-y = [5, 5]
+# hide-cursor-when-typing = true
+padding-x = 10
+option-as-alt = "both"
+padding-y = [0, 0]
+navigation.unfocused-split-opacity = 1
+theme = "dracula"
 
 [window]
 decorations = "Transparent"
-opacity = 0.5
-blur = true
+# opacity = 0.75
+# blur = true
 
 [fonts]
 size = 12
-family = "0xProto Nerd Font"
+# family = "0xProto Nerd Font"
+family = "JetBrainsMono Nerd Font"
+extras = [
+  { family = "源雲明體" },
+]
 
 [shell]
 program = "/opt/homebrew/bin/fish"
@@ -19,3 +26,8 @@ args = ["--login"]
 [developer]
 log-level = "INFO"
 enable-log-file = true
+
+[renderer]
+filters = [
+  # "NewPixieCrt"
+]

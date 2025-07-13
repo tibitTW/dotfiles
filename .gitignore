@@ -1,3 +1,9 @@
 .zshrc_secret
 .config/fish/config_secret.fish
 .config/rio/log/
+
+Library/Rime/*.userdb
+Library/Rime/user.yaml
+Library/Rime/installation.yaml
+
+.DS_Store

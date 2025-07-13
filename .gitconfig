@@ -1,0 +1,47 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = chunhua
+	email = chunhua.2147483647@gmail.com
+[commit]
+	cleanup = strip
+[gitbutler]
+	aiModelProvider = openai
+	aiOpenAIKeyOption = bringYourOwn
+	aiOpenAIModelName = gpt-4o-mini
+	aiAnthropicKeyOption = bringYourOwn
+	gitbutlerCommitter = 1
+[safe]
+	directory = /Users/chunhua/.local/share/nvim/lazy/luvit-
+	directory = /Users/chunhua/.local/share/nvim/lazy/luvit-meta
+	directory = /Users/chunhua/gitlab/TestPlatform/ecoqapi
+
+[core]
+    pager = delta
+	editor = hx
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    side-by-side = true
+	features = detect-theme
+
+
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[init]
+  defaultBranch = main

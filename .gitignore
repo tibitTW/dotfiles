@@ -1,5 +1,5 @@
 .zshrc_secret
-.config/fish/config_secret.fish
+.secrets/api_keys.json
 .config/rio/log/
 
 Library/Rime/*.userdb

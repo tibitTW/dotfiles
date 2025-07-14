@@ -1,7 +1,7 @@
 #!/opt/homebrew/bin/fish
 
 if status is-login
-    source $HOME/dotfiles/.config/fish/config_secret.fish
+    source $HOME/.secrets/load_api_keys.fish
 
     # ----------------------------- tools ----------------------------- #
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -46,11 +46,6 @@ if status is-login
     # set JAVA_HOME "$(/usr/libexec/java_home)"
 
     set PATH $PATH ~/go/bin
-
-    set PYENV_ROOT "$HOME/.pyenv"
-
-    command -v pyenv >/dev/null || set PATH $PYENV_ROOT/bin $PATH
-    eval "$(pyenv init -)"
 
     # export DOTNET_ROOT /usr/local/share/dotnet
 end

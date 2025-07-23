@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source ~/.zshrc_secret
+source $HOME/dotfiles/scripts/load_api_keys.zsh
 
 # revised with eza
 # alias ls="exa"
@@ -41,8 +41,8 @@ alias gu='git pull'
 . "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export ASEPRITE_HOME="$HOME/tools/aseprite"
 
@@ -50,70 +50,54 @@ export ASEPRITE_HOME="$HOME/tools/aseprite"
 
 export PATH=$PATH:~/go/bin
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 # export DOTNET_ROOT=/usr/local/share/dotnet
 
 # ---                     zsh extensions                        --- #
 
-# use starship for prompt customize
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-eval "$(starship init zsh)"
+# # AnyBar script
+# function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
 
-# zsh syntax hightlighting & auto suggestion
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244,bold'
-bindkey '^I^I' autosuggest-accept
+# preexec() {
+#   anybar yellow
+# }
 
-# export ZPLUG_HOME=/opt/homebrew/opt/zplug
-# source $ZPLUG_HOME/init.zsh
-
-export PATH=$PATH:~/scripts/:~/music-maker/alda/
-
-# AnyBar script
-function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
-
-preexec() {
-  anybar yellow
-}
-
-precmd() {
-  local EXIT_CODE=$?
-  if [ $EXIT_CODE -eq 0 ]; then
-    anybar green
-  else
-    anybar red
-  fi
-}
+# precmd() {
+#   local EXIT_CODE=$?
+#   if [ $EXIT_CODE -eq 0 ]; then
+#     anybar green
+#   else
+#     anybar red
+#   fi
+# }
 
 # fzf code
 
 # Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh --color=16)"
+# eval "$(fzf --zsh --color=16)"
 
 # -- Use fd instead of fzf --
 
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+# export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
+# _fzf_compgen_path() {
+#   fd --hidden --exclude .git . "$1"
+# }
 
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
+# # Use fd to generate the list for directory completion
+# _fzf_compgen_dir() {
+#   fd --type=d --hidden --exclude .git . "$1"
+# }
 
-# fzf-git setup
-source /etc/fzf-git.sh
+# # fzf-git setup
+# source /etc/fzf-git.sh
+
+# starship
+eval "$(starship init zsh)"
 
 # ---- Eza (better ls) -----
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
@@ -144,4 +128,3 @@ export PATH=$PATH:~/tools
 #     export VISUAL="nvim"
 #     export EDITOR="nvim"
 # fi
-

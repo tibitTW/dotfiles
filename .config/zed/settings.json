@@ -18,11 +18,10 @@
     },
     "icon_theme": "Symbols Icon Theme",
     "show_edit_predictions": true,
-    "buffer_font_size": 11,
+    "buffer_font_size": 12,
 
     // jetbrains settings
     "buffer_font_family": "JetBrainsMono Nerd Font",
-    "buffer_font_fallbacks": ["CaskaydiaCove Nerd Font"],
     "buffer_font_weight": 500,
     "buffer_font_features": {
         "calt": true,
@@ -51,7 +50,7 @@
     // ui
     "agent_font_size": 14,
     "ui_font_size": 12,
-    "ui_font_family": "JetBrains Mono",
+    "ui_font_family": "JetBrainsMono Nerd Font",
     "ui_font_weight": 600,
     "theme": "Dracula",
     "tab_bar": {
@@ -97,7 +96,7 @@
 
     // ------------------------------ editor ------------------------------ //
     "vim_mode": true,
-    "helix_mode": true,
+    // "helix_mode": true,
     // "vertical_scroll_margin": 999, // keep cursor at center
     "tab_size": 4,
     "hard_tabs": false,
@@ -236,9 +235,9 @@
 
     // ---------------------------- terminal ---------------------------- //
     "terminal": {
-        // "shell": {
-        //     "program": "/opt/homebrew/bin/fish"
-        // },
+        "shell": {
+            "program": "/opt/homebrew/bin/fish"
+        },
         "blinking": "off",
         "env": {
             "PYTHONPATH": "."
@@ -313,7 +312,7 @@
         },
         "default_profile": "ask",
         "default_model": {
-            "provider": "copilot_chat",
+            "provider": "zed.dev",
             "model": "claude-sonnet-4"
         }
     },

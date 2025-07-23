@@ -1,9 +1,12 @@
-font-family = "0xProto Nerd Font"
+# font-family = "0xProto Nerd Font"
+font-family = "JetBrainsMono Nerd Font"
+adjust-cell-width = "-10%"
+adjust-cell-height = "5%"
 
 window-padding-x = 8
 window-padding-y = 4
 
-background-opacity = 0.6
+background-opacity = 0.75
 background-blur = true
 
 # 

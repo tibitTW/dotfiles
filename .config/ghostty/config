@@ -1,5 +1,9 @@
 # font-family = "0xProto Nerd Font"
+# font-size = 12
 font-family = "JetBrainsMono Nerd Font"
+font-family = "Lantinghei TC"
+
+font-codepoint-map = "U+4E00-U+9FFF,U+3400-U+4DBF = IBM Plex Sans TC"
 adjust-cell-width = "-10%"
 adjust-cell-height = "5%"
 
@@ -9,7 +13,6 @@ window-padding-y = 4
 background-opacity = 0.75
 background-blur = true
 
-# 
 window-theme = dark
 theme = dracula
 # theme = light:rose-pine-dawn,dark:rose-pine
@@ -20,8 +23,14 @@ cursor-style-blink = false
 
 command = /opt/homebrew/bin/fish --login --interactive
 
-shell-integration = fish
+# macos-non-native-fullscreen = visible-menu
 macos-option-as-alt = true
-
+macos-titlebar-style = tabs
 macos-icon = holographic
+macos-window-buttons = hidden
 
+# keybinding
+keybind = option+h=goto_split:left
+keybind = option+j=goto_split:bottom
+keybind = option+k=goto_split:top
+keybind = option+l=goto_split:right

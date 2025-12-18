@@ -42,7 +42,8 @@
                 { "direction": "right" }
             ],
 
-            "ctrl-escape": "terminal_panel::ToggleFocus"
+            "ctrl-escape": "terminal_panel::ToggleFocus",
+            "cmd-,": "zed::OpenSettingsFile"
         }
     }
 ]

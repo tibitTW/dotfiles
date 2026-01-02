@@ -15,11 +15,16 @@ background-blur = true
 
 window-theme = dark
 theme = dracula
+# theme = Kanagawa Dragon
 # theme = light:rose-pine-dawn,dark:rose-pine
 
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
+
+# custom-shader = shaders/cursor_blaze.glsl
+custom-shader = shaders/WIP.glsl
+# custom-shader = shaders/tft.glsl
 
 command = /opt/homebrew/bin/fish --login --interactive
 
@@ -34,3 +39,5 @@ keybind = option+h=goto_split:left
 keybind = option+j=goto_split:bottom
 keybind = option+k=goto_split:top
 keybind = option+l=goto_split:right
+
+# shell-integration-features = ssh-env, ssh-terminfo

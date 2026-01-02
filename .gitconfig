@@ -9,10 +9,10 @@
 [commit]
 	cleanup = strip
 [gitbutler]
-	aiModelProvider = openai
-	aiOpenAIKeyOption = bringYourOwn
+	aiModelProvider = anthropic
+	aiOpenAIKeyOption = butlerAPI
 	aiOpenAIModelName = gpt-4o-mini
-	aiAnthropicKeyOption = bringYourOwn
+	aiAnthropicKeyOption = butlerAPI
 	gitbutlerCommitter = 1
 [safe]
 	directory = /Users/chunhua/.local/share/nvim/lazy/luvit-
@@ -28,9 +28,9 @@
 
 [delta]
     navigate = true    # use n and N to move between diff sections
-    side-by-side = true
+	# side-by-side = true
 	features = detect-theme
-
+	diff-highlight = true
 
     # delta detects terminal colors automatically; set one of these to disable auto-detection
     # dark = true
@@ -45,3 +45,6 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [init]
   defaultBranch = main
+
+[includeIf "gitdir:~/gitlab/"]
+	path = "~/.gitconfig-qnap"

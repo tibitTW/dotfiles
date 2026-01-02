@@ -8,15 +8,15 @@ theme = "dracula"
 
 [window]
 decorations = "Transparent"
-# opacity = 0.75
-# blur = true
+opacity = 0.75
+blur = true
 
 [fonts]
 size = 12
 # family = "0xProto Nerd Font"
 family = "JetBrainsMono Nerd Font"
 extras = [
-  { family = "源雲明體" },
+#   { family = "" },
 ]
 
 [shell]

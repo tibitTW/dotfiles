@@ -1,5 +1,6 @@
 # theme = "kanagawa"
 theme = "dracula"
+# theme = "kanagawa-dragon"
 
 [editor]
 line-number = "relative"

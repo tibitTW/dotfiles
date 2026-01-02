@@ -1,13 +1,11 @@
 #!/opt/homebrew/bin/fish
-
 if status is-login
-    source $HOME/.secrets/load_api_keys.fish
+    source $HOME/dotfiles/scripts/load_api_keys.fish
 
     # ----------------------------- tools ----------------------------- #
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
 
-    set -gx EDITOR hx
+    set -gx EDITOR vim
 
     # TODO: replace to fish version
     # bindkey '^I^I' autosuggest-accept
@@ -22,32 +20,31 @@ if status is-login
         rm -f -- "$tmp"
     end
 
-    function fish_prompt_anybar --on-event fish_prompt
-        set -l last_status $status
-        if test $last_status -eq 0
-            anybar green
-        else
-            anybar red
-        end
-    end
-
     # Zoxide
     zoxide init fish | source
+
+    # Set up fzf key bindings
+    fzf --fish | source
 
     # ----------------------- dev framework / languages ----------------------- #
     source "$HOME/.cargo/env.fish"
 
-    # set NVM_DIR "$HOME/.nvm"
-    # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    # fundle plugin FabioAntunes/fish-nvm
+    # fundle plugin edc/bass
+    # fundle init
 
     set ASEPRITE_HOME "$HOME/tools/aseprite"
 
     # set JAVA_HOME "$(/usr/libexec/java_home)"
+    # set -x PATH $JAVA_HOME/bin $PATH
 
     set PATH $PATH ~/go/bin
 
     # export DOTNET_ROOT /usr/local/share/dotnet
+end
+
+if test "$TERM_PROGRAM" = ghostty
+    set -x TERM xterm-256color
 end
 
 if status is-interactive
@@ -90,5 +87,6 @@ if status is-interactive
 
     # -------------------- tools -------------------- #
     # use starship for prompt customize
+    set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
     starship init fish | source
 end

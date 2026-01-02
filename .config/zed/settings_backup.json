@@ -7,34 +7,42 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-    // --------------------------- general --------------------------- //
-    "use_system_prompts": true,
+    "ensure_final_newline_on_save": false,
+    "remove_trailing_whitespace_on_save": false,
+    "helix_mode": false,
+    "buffer_line_height": "comfortable",
     "use_system_path_prompts": false,
     "profiles": {
+        // "nb_mode": {
+        //     "ui_font_size": 12,
+        //     "buffer_font_size": 12
+        // },
         "big_screen_mode": {
             "ui_font_size": 14,
             "buffer_font_size": 14,
             "agent_buffer_font_size": 14,
-            "agent_ui_font_size": 16,
-        },
+            "agent_ui_font_size": 16
+        }
     },
-    // --------------------------- UI & appearance --------------------------- //
-    // font
-    "buffer_font_size": 12,
-    "agent_buffer_font_size": 10.0,
-    "agent_ui_font_size": 14,
-    "ui_font_size": 12,
-    "ui_font_family": "JetBrainsMono Nerd Font",
-    "ui_font_weight": 600,
-    "buffer_line_height": "comfortable",
+    // --------------------------- appearance --------------------------- //
+    "edit_predictions": {
+        "mode": "eager",
+        "copilot": {
+            "proxy": null,
+            "proxy_no_verify": null
+        },
+        "enabled_in_text_threads": false
+    },
+    "show_edit_predictions": true,
 
     // jetbrains settings
     "buffer_font_family": "JetBrainsMono Nerd Font",
     "buffer_font_weight": 500,
     "buffer_font_features": {
         "calt": true,
+        // "ss01": true,
         "ss02": true,
-        "zero": true,
+        "zero": true
     },
 
     // // cascadia code settings
@@ -55,90 +63,92 @@
     // },
 
     // ui
-    "icon_theme": "Monospace Icon Theme - Dark",
-    "theme": "Kanagawa Dragon",
+    "icon_theme": "Symbols Icon Theme",
+    "buffer_font_size": 12,
+    "agent_buffer_font_size": 10.0,
+    "agent_ui_font_size": 14,
+    "ui_font_size": 12,
+    "ui_font_family": "JetBrainsMono Nerd Font",
+    "ui_font_weight": 600,
+    "theme": "Tokyo Night Light",
     "tab_bar": {
-        "show_nav_history_buttons": false,
+        "show_nav_history_buttons": false
     },
     "active_pane_modifiers": {
-        "border_size": 1,
+        "border_size": 1
     },
     "scrollbar": {
         "diagnostics": "none",
         "git_diff": true,
-        "show": "auto",
+        "show": "auto"
+    },
+    "tabs": {
+        // "git_status": true
     },
     "soft_wrap": "editor_width",
     "show_whitespaces": "boundary",
     "wrap_guides": [88],
     "indent_guides": {
-        "active_line_width": 2,
+        "active_line_width": 2
     },
     "project_panel": {
         "indent_size": 16,
-        "sticky_scroll": false,
+        "sticky_scroll": false
     },
-    "zoomed_padding": false,
-
+    // "relative_line_numbers": true,
     "experimental.theme_overrides": {
-        // for aquarium theme: https://github.com/bIaqat/aquarium-theme-zed/pull/2
-        // "border.selected": "#303347ff",
         "syntax": {
             "comment": {
-                "font_style": "italic",
+                "font_style": "italic"
             },
             "keyword": {
                 "font_style": "italic",
-                "font_weight": 600,
+                "font_weight": 600
             },
             "type": {
-                "font_weight": 600,
+                "font_weight": 600
             },
             "variable.special": {
                 "font_style": "italic",
-                "font_weight": 600,
-            },
-        },
-        "predictive": "#666", // change suggestion color
+                "font_weight": 600
+            }
+        }
+        // "predictive": "#666" // change suggestion color
     },
 
     // ------------------------------ editor ------------------------------ //
     "vim_mode": true,
-    "helix_mode": false,
-    "relative_line_numbers": "enabled",
+    // "helix_mode": true,
+    "relative_line_numbers": "wrapped",
     // "vertical_scroll_margin": 999, // keep cursor at center
     "tab_size": 4,
     "hard_tabs": false,
     "show_completions_on_input": true,
     "always_treat_brackets_as_autoclosed": true,
-
-    // ------------------------ formatter & linter ------------------------ //
     "file_types": {
         "XML": ["csproj", "vcxproj"],
-        "shell": ["*rc"],
-        "json": [".prettierrc"],
+        "shell": ["*rc"]
     },
 
+    // ------------------------ formatter & linter ------------------------ //
     "format_on_save": "off",
-    "ensure_final_newline_on_save": false,
-    "remove_trailing_whitespace_on_save": false,
     "languages": {
         "Python": {
-            "language_servers": ["!pyright", "ruff", "ty", "!pyrefly"],
+            "language_servers": ["pyright", "ruff", "!ty", "!pyrefly"],
             "formatter": [
                 {
-                    "code_action": "source.organizeImports.ruff",
+                    "code_action": "source.organizeImports.ruff"
                 },
                 {
-                    "code_action": "source.check.ruff",
+                    "code_action": "source.check.ruff"
                 },
                 {
                     "language_server": {
-                        "name": "ruff",
-                    },
-                },
+                        "name": "ruff"
+                    }
+                }
             ],
-            "format_on_save": "on",
+            "format_on_save": "on"
         },
         "C++": {
             "formatter": {
@@ -146,11 +156,11 @@
                     "command": "clang-format",
                     "arguments": [
                         "--assume-filename={buffer_path}",
-                        "--style={ BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4 }",
-                    ],
-                },
+                        "--style={ BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4 }"
+                    ]
+                }
             },
-            "format_on_save": "off",
+            "format_on_save": "off"
         },
         "JavaScript": {
             "formatter": {
@@ -160,34 +170,27 @@
                         "--stdin-filepath",
                         "{buffer_path}",
                         "--tab-width",
-                        "4",
-                    ],
-                },
-            },
+                        "4"
+                    ]
+                }
+            }
         },
         "Make": {
-            "hard_tabs": true,
+            "hard_tabs": true
         },
         "Markdown": {
-            "show_edit_predictions": false,
+            "show_edit_predictions": false
             // "format_on_save": "on"
         },
         "Typst": {
             "formatter": {
                 "external": {
                     "command": "typstyle",
-                    "arguments": [],
-                },
+                    "arguments": []
+                }
             },
-            "format_on_save": "on",
-        },
-        "Java": {
-            "enable_language_server": false,
-        },
-        "CSharp": {
-            // "enable_language_server": false,
-            "language_servers": ["!roslyn", "omnisharp"],
-        },
+            "format_on_save": "on"
+        }
     },
     "lsp": {
         "ruff": {
@@ -197,91 +200,74 @@
                     "lineLength": 88,
                     "lint": {
                         "select": ["ALL"],
-                        "extendSelect": ["I"],
+                        "extendSelect": ["I"]
                         // "ignore": ["F401"]
-                    },
-                },
-            },
+                    }
+                }
+            }
         },
         "pyright": {
             "settings": {
                 "python.analysis": {
                     "diagnosticMode": "workspace",
                     "typeCheckingMode": "strict",
-                    "ignore": [""],
+                    "ignore": [""]
                 },
                 "python": {
                     "pythonPath": [
                         "./.venv/bin/python",
-                        "~/.pyenv/shims/python",
-                    ],
-                },
-            },
+                        "~/.pyenv/shims/python"
+                    ]
+                }
+            }
         },
         "omnisharp": {
             "settings": {
                 "csharp.analysis": {
-                    "diagnosticMode": "off",
-                    "typeCheckingMode": "off",
-                },
-            },
+                    // "diagnosticMode": "off",
+                    // "typeCheckingMode": "off"
+                }
+            }
         },
         "pyrefly": {
             "settings": {
                 "python": {
-                    "pythonPath": ".venv/bin/python",
+                    "pythonPath": ".venv/bin/python"
                 },
                 "pyrefly": {
-                    "python_interpreter": ".venv/bin/python",
-                },
-            },
+                    "python_interpreter": ".venv/bin/python"
+                }
+            }
         },
         "ty": {
             "binary": {
-                "path": ".venv/bin/ty",
-                "arguments": ["server"],
-            },
+                "path": "/Users/chunhua/.local/bin/ty",
+                "arguments": ["server"]
+            }
         },
         "tinymist": {
             "settings": {
                 "exportPdf": "onSave",
-                "outputPath": "$dir/$name",
-            },
-        },
-        "rust-analyzer": {
-            "initialization_options": {
-                "cachePriming": {
-                    "enable": false,
-                },
-            },
-        },
-        // "jdtls": {
-        //     "settings": {
-        //         "java_home": "/opt/homebrew/opt/SDKMAN-cli/libexec/candidates/java/current",
-        //         "jdk_auto_download": false,
-        //     },
-        // },
-        // "java": {
-        //     "settings": {
-        //         "java_home": "/opt/homebrew/opt/SDKMAN-cli/libexec/candidates/java/current",
-        //     },
-        // },
+                "outputPath": "$root/$name"
+            }
+        }
     },
 
     // ---------------------------- terminal ---------------------------- //
     "terminal": {
         "detect_venv": {
             "on": {
-                "activate_script": "fish",
-            },
+                "directories": [".venv", "venv"],
+                "activate_script": "fish"
+            }
         },
         "shell": {
-            "program": "/opt/homebrew/bin/fish",
+            "program": "/opt/homebrew/bin/fish"
         },
         "blinking": "off",
         "env": {
-            "PYTHONPATH": ".",
-        },
+            "PYTHONPATH": "."
+        }
     },
 
     // ---------------------------- remote ---------------------------- //
@@ -289,64 +275,63 @@
         {
             "host": "10.19.16.10",
             "username": "nvh",
-            "args": [],
             "projects": [
                 {
-                    "paths": [
-                        "/home/nvh/./"
-                    ]
+                    "paths": ["/home/nvh/gitlab/qapi_v4"]
                 },
                 {
-                    "paths": [
-                        "/home/nvh/gitlab/qapi4"
-                    ]
+                    "paths": ["~/gitlab/nasx86"]
+                },
+                {
+                    "paths": ["~/gitlab/nasx86/NasLib/network_management"]
+                },
+                {
+                    "paths": ["~/gitlab/qts_nvs"]
                 }
             ]
         }
     ],
 
     // ---------------------------- AI ---------------------------- //
-    "edit_predictions": {
-        "mode": "eager",
-        "copilot": {
-            "proxy": null,
-            "proxy_no_verify": null,
-        },
-        "enabled_in_text_threads": false,
-    },
-    "show_edit_predictions": true,
     "language_models": {},
     "agent": {
-        "always_allow_tool_actions": true,
         "inline_assistant_model": {
             "provider": "copilot_chat",
-            "model": "claude-haiku-4.5",
+            "model": "claude-sonnet-4.5"
         },
-        "default_profile": "write",
+        "default_profile": "ask",
         "default_model": {
-            "provider": "copilot_chat",
-            "model": "claude-haiku-4.5",
-        },
+            "provider": "openrouter",
+            "model": "anthropic/claude-haiku-4.5"
+        }
     },
     "features": {
-        "edit_prediction_provider": "zed",
+        "edit_prediction_provider": "zed"
+    },
+    "context_servers": {
+        "mcp-server-gitlab": {
+            //         "enabled": true,
+            //         "settings": {
+            //             "gitlab_personal_access_token": "2F2wPdiVdzke_x7BXeSq"
+            //         }
+        }
     },
 
     // ---------------------------- others ---------------------------- //
     // avoid zed to collect data
     "telemetry": {
         "diagnostics": false,
-        "metrics": false,
+        "metrics": false
     },
     "command_aliases": {
         "lsplg": "dev::openLanguageServerLogs",
-        "lg": "zed::openLog",
+        "lg": "zed::openLog"
     },
     "auto_install_extensions": {
         "dracula": true,
         "git-firefly": true,
         "kanagawa-themes": true,
         "rose-pine-theme": true,
-        "ruff": true,
-    },
+        "ruff": true
+    }
 }

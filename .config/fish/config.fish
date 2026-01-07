@@ -1,6 +1,7 @@
 #!/opt/homebrew/bin/fish
+
 if status is-login
-    source $HOME/dotfiles/scripts/load_api_keys.fish
+    source $HOME/dotfiles/scripts/load_api_keys.fish || echo "load api keys failed!"
 
     # ----------------------------- tools ----------------------------- #
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -41,10 +42,6 @@ if status is-login
     set PATH $PATH ~/go/bin
 
     # export DOTNET_ROOT /usr/local/share/dotnet
-end
-
-if test "$TERM_PROGRAM" = ghostty
-    set -x TERM xterm-256color
 end
 
 if status is-interactive
@@ -89,4 +86,17 @@ if status is-interactive
     # use starship for prompt customize
     set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
     starship init fish | source
+end
+
+if test "$TERM_PROGRAM" = ghostty
+    set -x TERM xterm-256color
+end
+
+function python_venv --on-variable PWD
+    set myvenv ./.venv
+    if test -d $myvenv
+        source $myvenv/bin/activate.fish
+    else if type -q deactivate
+        deactivate
+    end
 end

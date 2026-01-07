@@ -276,7 +276,10 @@
             },
         },
         "shell": {
-            "program": "/opt/homebrew/bin/fish",
+            "with_arguments": {
+                "program": "/opt/homebrew/bin/fish",
+                "args": ["--login", "--interactive"],
+            },
         },
         "blinking": "off",
         "env": {

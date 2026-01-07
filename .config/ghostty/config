@@ -22,9 +22,11 @@ shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
 
-# custom-shader = shaders/cursor_blaze.glsl
-custom-shader = shaders/WIP.glsl
-# custom-shader = shaders/tft.glsl
+# custom-shader = shaders/WIP.glsl
+# custom-shader = shaders/cursor_frozen.glsl
+# custom-shader = shaders/cursor_blaze_tapered.glsl
+# custom-shader = shaders/cursor_fire.glsl
+custom-shader = shaders/cursor_fire_rev.glsl
 
 command = /opt/homebrew/bin/fish --login --interactive
 
@@ -34,10 +36,15 @@ macos-titlebar-style = tabs
 macos-icon = holographic
 macos-window-buttons = hidden
 
-# keybinding
+# keybinding #
+# negivation
 keybind = option+h=goto_split:left
 keybind = option+j=goto_split:bottom
 keybind = option+k=goto_split:top
 keybind = option+l=goto_split:right
+
+keybind = global:ctrl+T=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-animation-duration = 0
 
 # shell-integration-features = ssh-env, ssh-terminfo

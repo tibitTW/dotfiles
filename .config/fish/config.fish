@@ -58,6 +58,7 @@ if status is-interactive
     alias pping="prettyping"
     alias zlj="zellij"
 
+    alias gui="gitui -t catppuccin-mocha.ron"
     alias vercel="vercel -t $VERCEL_KEY"
 
     # --- git alias --- #

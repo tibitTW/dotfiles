@@ -46,11 +46,12 @@ export NVM_DIR="$HOME/.nvm"
 
 export ASEPRITE_HOME="$HOME/tools/aseprite"
 
-# export JAVA_HOME="$(/usr/libexec/java_home)"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export JAVA_HOME="$(/usr/libexec/java_home)"
 
 export PATH=$PATH:~/go/bin
 
-# export DOTNET_ROOT=/usr/local/share/dotnet
+export DOTNET_ROOT=/usr/local/share/dotnet
 
 # ---                     zsh extensions                        --- #
 
@@ -128,3 +129,10 @@ export PATH=$PATH:~/tools
 #     export VISUAL="nvim"
 #     export EDITOR="nvim"
 # fi
+
+# Added by Antigravity
+export PATH="/Users/chunhua/.antigravity/antigravity/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/chunhua/.sdkman"
+[[ -s "/Users/chunhua/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/chunhua/.sdkman/bin/sdkman-init.sh"

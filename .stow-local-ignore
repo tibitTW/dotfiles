@@ -1,4 +1,5 @@
 \.git
 \.gitignore
-scripts
-
+# scripts
+README.md
+.DS_Store

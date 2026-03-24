@@ -1,0 +1,4 @@
+#!/bin/sh
+ssh-add --apple-use-keychain ~/.ssh/louisli
+ssh-add --apple-use-keychain ~/.ssh/tibittw
+

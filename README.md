@@ -46,3 +46,11 @@
     # in .secrets/ directory
     gpg -o api_keys.json -d api_keys.json.gpg
     ```
+
+    p.s. To encrypt `api_keys.json` (after update it), use `-c` flag to encrypt:
+
+    ```sh
+    gpg -c api_keys.json
+    ```
+
+    And follow the instructions to generate the encrypted `.gpg` file.

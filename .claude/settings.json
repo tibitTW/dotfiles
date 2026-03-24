@@ -1,0 +1,11 @@
+{
+  "enabledPlugins": {
+    "example-skills@anthropic-agent-skills": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "effortLevel": "high"
+}

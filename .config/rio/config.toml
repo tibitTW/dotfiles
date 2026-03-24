@@ -21,7 +21,7 @@ extras = [
 
 [shell]
 program = "/opt/homebrew/bin/fish"
-args = ["--login"]
+args = ["--login", "--interactive"]
 
 [developer]
 log-level = "INFO"

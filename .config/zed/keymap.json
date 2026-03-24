@@ -27,23 +27,42 @@
             "alt-l": "workspace::ActivatePaneRight",
             "alt-shift-h": [
                 "workspace::MoveItemToPaneInDirection",
-                { "direction": "left" }
+                { "direction": "left" },
             ],
             "alt-shift-j": [
                 "workspace::MoveItemToPaneInDirection",
-                { "direction": "down" }
+                { "direction": "down" },
             ],
             "alt-shift-k": [
                 "workspace::MoveItemToPaneInDirection",
-                { "direction": "up" }
+                { "direction": "up" },
             ],
             "alt-shift-l": [
                 "workspace::MoveItemToPaneInDirection",
-                { "direction": "right" }
+                { "direction": "right" },
             ],
-
             "ctrl-escape": "terminal_panel::ToggleFocus",
-            "cmd-,": "zed::OpenSettingsFile"
-        }
-    }
+            "cmd-,": "zed::OpenSettingsFile",
+            "cmd-alt-shift-i": "editor::FormatSelections",
+            // "cmd-ctrl-c": ["task::Spawn", {"task_name": "compile marp file to html"}]
+        },
+    },
+    {
+        "context": "VimVisual",
+        "bindings": {
+            "cmd-shift-i": "editor::FormatSelections",
+        },
+    },
+    // {
+    //     "context": "(Editor && selecting)",
+    //     "bindings": {
+    //         "cmd-shift-i": "editor::FormatSelections",
+    //     },
+    // },
+    {
+        "context": "(VimControl && !menu)",
+        "bindings": {
+            "space": null, // Disable the default action vim::WrappingRight
+        },
+    },
 ]

@@ -1,11 +1,11 @@
 __build_info:
-  rime_version: 1.13.0
+  rime_version: 1.16.0
   timestamps:
-    default: 1737643099
-    default.custom: 1744957332
-    key_bindings: 1737643099
+    default: 1768354364
+    default.custom: 1773844853
+    key_bindings: 1768354364
     key_bindings.custom: 0
-    punctuation: 1737643099
+    punctuation: 1768354364
     punctuation.custom: 0
 ascii_composer:
   good_old_caps_lock: true
@@ -16,7 +16,7 @@ ascii_composer:
     Eisu_toggle: clear
     Shift_L: inline_ascii
     Shift_R: commit_text
-config_version: 0.40
+config_version: 0.50
 key_binder:
   bindings:
     - {accept: "Control+p", send: Up, when: composing}
@@ -33,9 +33,6 @@ key_binder:
     - {accept: "Control+y", send: Page_Up, when: composing}
     - {accept: "Alt+v", send: Page_Up, when: composing}
     - {accept: "Control+v", send: Page_Down, when: composing}
-    - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
-    - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
-    - {accept: Tab, send: "Shift+Right", when: composing}
     - {accept: minus, send: Page_Up, when: has_menu}
     - {accept: equal, send: Page_Down, when: has_menu}
     - {accept: comma, send: Page_Up, when: paging}
@@ -127,8 +124,14 @@ recognizer:
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
 schema_list:
   - schema: luna_pinyin
+  - schema: bopomofo
   - schema: bopomofo_tw
   - schema: double_pinyin_flypy
+selector:
+  bindings:
+    ISO_Left_Tab: previous_candidate
+    "Shift+Tab": previous_candidate
+    Tab: next_candidate
 switcher:
   abbreviate_options: true
   caption: "〔方案選單〕"

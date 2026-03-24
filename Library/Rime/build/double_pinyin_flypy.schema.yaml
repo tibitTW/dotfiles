@@ -1,13 +1,13 @@
 __build_info:
-  rime_version: 1.13.0
+  rime_version: 1.16.0
   timestamps:
-    default: 1737643099
-    default.custom: 1744957332
+    default: 1768354364
+    default.custom: 1773844853
     double_pinyin_flypy.custom: 0
-    double_pinyin_flypy.schema: 1744957164
-    key_bindings: 1737643099
+    double_pinyin_flypy.schema: 1752402492
+    key_bindings: 1768354364
     key_bindings.custom: 0
-    punctuation: 1737643099
+    punctuation: 1768354364
     punctuation.custom: 0
 engine:
   filters:
@@ -48,9 +48,6 @@ key_binder:
     - {accept: "Control+y", send: Page_Up, when: composing}
     - {accept: "Alt+v", send: Page_Up, when: composing}
     - {accept: "Control+v", send: Page_Down, when: composing}
-    - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
-    - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
-    - {accept: Tab, send: "Shift+Right", when: composing}
     - {accept: minus, send: Page_Up, when: has_menu}
     - {accept: equal, send: Page_Down, when: has_menu}
     - {accept: comma, send: Page_Up, when: paging}
@@ -166,6 +163,11 @@ schema:
   name: "小鶴雙拼"
   schema_id: double_pinyin_flypy
   version: 0.18
+selector:
+  bindings:
+    ISO_Left_Tab: previous_candidate
+    "Shift+Tab": previous_candidate
+    Tab: next_candidate
 speller:
   algebra:
     - "erase/^xx$/"

@@ -8,8 +8,6 @@
 // from the command palette or from `Zed` application menu.
 {
     // --------------------------- general --------------------------- //
-    "use_system_prompts": true,
-    "use_system_path_prompts": false,
     "profiles": {
         "big_screen_mode": {
             "ui_font_size": 14,
@@ -22,12 +20,11 @@
     // font
     "buffer_font_size": 12,
     "agent_buffer_font_size": 10.0,
-    "agent_ui_font_size": 14,
+    // "agent_ui_font_size": 14,
     "ui_font_size": 12,
     "ui_font_family": "JetBrainsMono Nerd Font",
     "ui_font_weight": 600,
     "buffer_line_height": "comfortable",
-
     // jetbrains settings
     "buffer_font_family": "JetBrainsMono Nerd Font",
     "buffer_font_weight": 500,
@@ -36,27 +33,24 @@
         "ss02": true,
         "zero": true,
     },
-
     // // cascadia code settings
-    // "buffer_font_family": "CaskaydiaCove Nerd Font",
+    // "buffer_font_family": "CaskaydiaCove Nerd Font Mono",
     // "buffer_font_features": {
     //     "calt": true,
     //     "ss01": true,
     //     "ss02": true,
     //     "ss03": true,
     //     "ss20": true,
-    //     "zero": true
+    //     "zero": true,
     // },
-
     // // 0xProto settings
     // "buffer_font_family": "0xProto Nerd Font",
     // "buffer_font_features": {
-    //     "ss01": true
+    //     "ss01": true,
     // },
-
     // ui
     "icon_theme": "Monospace Icon Theme - Dark",
-    "theme": "Kanagawa Dragon",
+    "theme": "Dracula Solid",
     "tab_bar": {
         "show_nav_history_buttons": false,
     },
@@ -64,7 +58,7 @@
         "border_size": 1,
     },
     "scrollbar": {
-        "diagnostics": "none",
+        // "diagnostics": "none",
         "git_diff": true,
         "show": "auto",
     },
@@ -79,7 +73,10 @@
         "sticky_scroll": false,
     },
     "zoomed_padding": false,
-
+    "which_key": {
+        "enabled": true,
+        "delay_ms": 100,
+    },
     "experimental.theme_overrides": {
         // for aquarium theme: https://github.com/bIaqat/aquarium-theme-zed/pull/2
         // "border.selected": "#303347ff",
@@ -101,30 +98,28 @@
         },
         "predictive": "#666", // change suggestion color
     },
-
     // ------------------------------ editor ------------------------------ //
     "vim_mode": true,
     "helix_mode": false,
-    "relative_line_numbers": "enabled",
+    // "relative_line_numbers": "enabled",
     // "vertical_scroll_margin": 999, // keep cursor at center
     "tab_size": 4,
     "hard_tabs": false,
     "show_completions_on_input": true,
     "always_treat_brackets_as_autoclosed": true,
-
     // ------------------------ formatter & linter ------------------------ //
     "file_types": {
         "XML": ["csproj", "vcxproj"],
         "shell": ["*rc"],
         "json": [".prettierrc"],
+        "yaml": ["config"],
     },
-
     "format_on_save": "off",
     "ensure_final_newline_on_save": false,
     "remove_trailing_whitespace_on_save": false,
     "languages": {
         "Python": {
-            "language_servers": ["!pyright", "ruff", "ty", "!pyrefly"],
+            "language_servers": ["ruff", "ty", "!pyright", "!pyrefly"],
             "formatter": [
                 {
                     "code_action": "source.organizeImports.ruff",
@@ -182,7 +177,7 @@
             "format_on_save": "on",
         },
         "Java": {
-            "enable_language_server": false,
+            // "enable_language_server": false,
         },
         "CSharp": {
             // "enable_language_server": false,
@@ -203,36 +198,11 @@
                 },
             },
         },
-        "pyright": {
-            "settings": {
-                "python.analysis": {
-                    "diagnosticMode": "workspace",
-                    "typeCheckingMode": "strict",
-                    "ignore": [""],
-                },
-                "python": {
-                    "pythonPath": [
-                        "./.venv/bin/python",
-                        "~/.pyenv/shims/python",
-                    ],
-                },
-            },
-        },
         "omnisharp": {
             "settings": {
                 "csharp.analysis": {
                     "diagnosticMode": "off",
                     "typeCheckingMode": "off",
-                },
-            },
-        },
-        "pyrefly": {
-            "settings": {
-                "python": {
-                    "pythonPath": ".venv/bin/python",
-                },
-                "pyrefly": {
-                    "python_interpreter": ".venv/bin/python",
                 },
             },
         },
@@ -255,19 +225,7 @@
                 },
             },
         },
-        // "jdtls": {
-        //     "settings": {
-        //         "java_home": "/opt/homebrew/opt/SDKMAN-cli/libexec/candidates/java/current",
-        //         "jdk_auto_download": false,
-        //     },
-        // },
-        // "java": {
-        //     "settings": {
-        //         "java_home": "/opt/homebrew/opt/SDKMAN-cli/libexec/candidates/java/current",
-        //     },
-        // },
     },
-
     // ---------------------------- terminal ---------------------------- //
     "terminal": {
         "detect_venv": {
@@ -286,7 +244,6 @@
             "PYTHONPATH": ".",
         },
     },
-
     // ---------------------------- remote ---------------------------- //
     "ssh_connections": [
         {
@@ -295,46 +252,70 @@
             "args": [],
             "projects": [
                 {
-                    "paths": [
-                        "/home/nvh/./"
-                    ]
+                    "paths": ["/home/nvh/gitlab/qapi2"],
                 },
                 {
-                    "paths": [
-                        "/home/nvh/gitlab/qapi4"
-                    ]
-                }
-            ]
-        }
-    ],
-
-    // ---------------------------- AI ---------------------------- //
-    "edit_predictions": {
-        "mode": "eager",
-        "copilot": {
-            "proxy": null,
-            "proxy_no_verify": null,
+                    "paths": ["/home/nvh/gitlab/qapi4"],
+                },
+                {
+                    "paths": ["/home/nvh/gitlab/qconfig/./"],
+                },
+                {
+                    "paths": ["/home/nvh/gitlab/qsmis"],
+                },
+            ],
         },
-        "enabled_in_text_threads": false,
-    },
-    "show_edit_predictions": true,
+    ],
+    // ---------------------------- AI ---------------------------- //
+    // "edit_predictions": {
+    //     "provider": "zed",
+    //     "mode": "eager",
+    //     "copilot": {
+    //         "proxy": null,
+    //         "proxy_no_verify": null,
+    //     },
+    //     "enabled_in_text_threads": false,
+    // },
+    "show_edit_predictions": false,
     "language_models": {},
     "agent": {
-        "always_allow_tool_actions": true,
-        "inline_assistant_model": {
-            "provider": "copilot_chat",
-            "model": "claude-haiku-4.5",
-        },
-        "default_profile": "write",
         "default_model": {
             "provider": "copilot_chat",
-            "model": "claude-haiku-4.5",
+            "model": "claude-sonnet-4.6",
+            "enable_thinking": true,
+            "effort": "medium",
+        },
+        "favorite_models": [],
+        "model_parameters": [],
+    },
+    "agent_servers": {
+        "claude-acp": {
+            "type": "registry",
+        },
+        "auggie": {
+            "type": "registry",
+        },
+        "amp-acp": {
+            "type": "registry",
+        },
+        "opencode": {
+            "type": "registry",
+        },
+        "github-copilot": {
+            "type": "registry",
+        },
+        "Github Copilot": {
+            "type": "custom",
+            "command": "copilot",
+            "args": [],
+            "env": {},
+            "favorite_models": [],
+            "default_config_options": {},
+            "favorite_config_option_values": {},
         },
     },
-    "features": {
-        "edit_prediction_provider": "zed",
-    },
-
+    "use_system_prompts": true,
+    "use_system_path_prompts": false,
     // ---------------------------- others ---------------------------- //
     // avoid zed to collect data
     "telemetry": {
@@ -352,4 +333,5 @@
         "rose-pine-theme": true,
         "ruff": true,
     },
+    // "auto_update": false,
 }

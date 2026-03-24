@@ -1,19 +1,18 @@
 __build_info:
-  rime_version: 1.13.0
+  rime_version: 1.16.0
   timestamps:
     bopomofo.custom: 0
-    bopomofo.schema: 1737643099
+    bopomofo.schema: 1768354364
     bopomofo_tw.custom: 0
-    bopomofo_tw.schema: 1737643099
-    default: 1737643099
-    default.custom: 1744957332
-    grammar: 1737643099
-    grammar.custom: 0
-    key_bindings: 1737643099
+    bopomofo_tw.schema: 1768354364
+    default: 1768354364
+    default.custom: 1773844853
+    grammar: 0
+    key_bindings: 1768354364
     key_bindings.custom: 0
-    punctuation: 1737643099
+    punctuation: 1768354364
     punctuation.custom: 0
-    zhuyin: 1737643099
+    zhuyin: 1768354364
     zhuyin.custom: 0
 custom_phrase:
   db_class: stabledb
@@ -24,6 +23,7 @@ custom_phrase:
   user_dict: custom_phrase
 editor:
   bindings:
+    Tab: toggle_selection
     space: toggle_selection
 engine:
   filters:
@@ -50,8 +50,6 @@ engine:
     - "table_translator@custom_phrase"
     - reverse_lookup_translator
     - script_translator
-grammar:
-  language: "zh-hant-t-essay-bgw"
 key_binder:
   bindings:
     - {accept: "Control+p", send: Up, when: composing}
@@ -68,9 +66,6 @@ key_binder:
     - {accept: "Control+y", send: Page_Up, when: composing}
     - {accept: "Alt+v", send: Page_Up, when: composing}
     - {accept: "Control+v", send: Page_Down, when: composing}
-    - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
-    - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
-    - {accept: Tab, send: "Shift+Right", when: composing}
     - {accept: minus, send: Page_Up, when: has_menu}
     - {accept: equal, send: Page_Down, when: has_menu}
     - {accept: comma, send: Page_Up, when: paging}
@@ -90,9 +85,29 @@ key_binder:
     - {accept: minus, send: minus, when: has_menu}
     - {accept: minus, send: Page_Up, when: paging}
     - {accept: equal, send: Page_Down, when: has_menu}
+    - {accept: "Shift+exclam", send: KP_1, when: has_menu}
+    - {accept: "Shift+at", send: KP_2, when: has_menu}
+    - {accept: "Shift+numbersign", send: KP_3, when: has_menu}
+    - {accept: "Shift+dollar", send: KP_4, when: has_menu}
+    - {accept: "Shift+percent", send: KP_5, when: has_menu}
+    - {accept: "Shift+asciicircum", send: KP_6, when: has_menu}
+    - {accept: "Shift+ampersand", send: KP_7, when: has_menu}
+    - {accept: "Shift+asterisk", send: KP_8, when: has_menu}
+    - {accept: "Shift+parenleft", send: KP_9, when: has_menu}
+    - {accept: "Shift+parenright", send: KP_0, when: has_menu}
   import_preset: default
 menu:
-  alternative_select_keys: ABCDEFGHIJ
+  alternative_select_labels:
+    - "⇧1"
+    - "⇧2"
+    - "⇧3"
+    - "⇧4"
+    - "⇧5"
+    - "⇧6"
+    - "⇧7"
+    - "⇧8"
+    - "⇧9"
+    - "⇧0"
   page_size: 9
 punctuator:
   full_shape:
@@ -127,13 +142,13 @@ punctuator:
   half_shape:
     "!": {commit: "！"}
     "\"": {pair: ["“", "”"]}
-    "#": "#"
+    "#": {commit: "#"}
     "$": ["￥", "$", "€", "£", "¥", "¢", "¤"]
     "%": ["%", "％", "°", "℃"]
-    "&": "&"
+    "&": {commit: "&"}
     "'": {pair: ["‘", "’"]}
-    "(": "（"
-    ")": "）"
+    "(": {commit: "（"}
+    ")": {commit: "）"}
     "*": ["*", "＊", "·", "・", "×", "※", "❂"]
     "+": "+"
     ":": ["：", "；"]
@@ -141,7 +156,7 @@ punctuator:
     "=": "="
     ">": {commit: "。"}
     "?": ["？", "／", "/", "÷"]
-    "@": "@"
+    "@": {commit: "@"}
     "[": ["「", "【", "《", "〔", "［"]
     "\\": ["、", "\\", "＼"]
     "]": ["」", "】", "》", "〕", "］"]
@@ -154,13 +169,13 @@ punctuator:
     "~": "~"
 recognizer:
   patterns:
-    email: "^[a-z][-_.0-9a-z]*@.*$"
     reverse_lookup: "`[a-z]*'?$"
     uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp:|mailto:).*$"
 reverse_lookup:
   comment_format:
-    - "xform/e?r5$/er5/"
+    - "xform/^m(\\d)$/mu$1/"
+    - "xform/^r5$/er5/"
     - "xform/iu/iou/"
     - "xform/ui/uei/"
     - "xform/ong/ung/"
@@ -169,9 +184,10 @@ reverse_lookup:
     - "xform/iu/v/"
     - "xform/^([jqx])u/$1v/"
     - "xform/([iuv])n/$1en/"
-    - "xform/zh/Z/"
-    - "xform/ch/C/"
-    - "xform/sh/S/"
+    - "xform/^zhi?/Z/"
+    - "xform/^chi?/C/"
+    - "xform/^shi?/S/"
+    - "xform/^([zcsr])i/$1/"
     - "xform/ai/A/"
     - "xform/ei/I/"
     - "xform/ao/O/"
@@ -200,12 +216,21 @@ schema:
   description: |
     注音符號輸入，採用「大千式」鍵盤排列，輸出臺灣正體字形。
 
-    本方案採用「無模式」設計，以大寫字母鍵或上下方向鍵、回車鍵選詞；
-    空格鍵輸入第一聲，標記爲「ˉ」。也可省略聲調或韻母部份。
+    本方案採用「無模式」設計，以 Shift+數字鍵選字，
+    或以 Tab、方向鍵切換候選字，回車鍵上屏。
+
+    空格鍵輸入第一聲，標記爲「ˉ」。可省略聲調、韻母。
+
+    輸入逗號「，」句號「。」須輔以 Shift 鍵。
 
   name: "注音·臺灣正體"
   schema_id: bopomofo_tw
-  version: 1.8
+  version: 3.0
+selector:
+  bindings:
+    ISO_Left_Tab: previous_candidate
+    "Shift+Tab": previous_candidate
+    Tab: next_candidate
 speller:
   algebra:
     - "xform/^m(\\d)$/mu$1/"
@@ -252,10 +277,7 @@ switches:
     reset: 2
     states: ["傳統漢字", "简化字", "臺灣字形"]
 translator:
-  contextual_suggestions: true
   dictionary: terra_pinyin
-  max_homographs: 7
-  max_homophones: 7
   preedit_format:
     - "xlit|1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347'|ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦˉˊˇˋ˙ |"
   prism: bopomofo_tw

@@ -18,27 +18,21 @@
 	directory = /Users/chunhua/.local/share/nvim/lazy/luvit-
 	directory = /Users/chunhua/.local/share/nvim/lazy/luvit-meta
 	directory = /Users/chunhua/gitlab/TestPlatform/ecoqapi
-
 [core]
     pager = delta
 	editor = hx
-
 [interactive]
     diffFilter = delta --color-only
-
 [delta]
     navigate = true    # use n and N to move between diff sections
 	# side-by-side = true
 	features = detect-theme
 	diff-highlight = true
-
     # delta detects terminal colors automatically; set one of these to disable auto-detection
     # dark = true
     # light = true
-
 [merge]
     conflictstyle = diff3
-
 [diff]
     colorMoved = default
 [alias]
@@ -46,5 +40,3 @@
 [init]
   defaultBranch = main
 
-[includeIf "gitdir:~/gitlab/"]
-	path = "~/.gitconfig-qnap"

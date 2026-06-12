@@ -1,8 +1,7 @@
 # yabai service
-ctrl + alt + shift - s : yabai --start-service
-ctrl + alt + shift - r : yabai --restart-service
-ctrl + alt + shift - q : yabai --stop-service
-
+# ctrl + alt + shift - s : yabai --start-service
+# ctrl + alt + shift - r : yabai --restart-service
+# ctrl + alt + shift - q : yabai --stop-service
 
 # change space layout
 ctrl + alt + shift - b : yabai -m space --layout bsp

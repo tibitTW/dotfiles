@@ -27,6 +27,11 @@ if status is-login
     # Set up fzf key bindings
     fzf --fish | source
 
+    # tuxedo
+    set -gx TODO_DIR "$HOME/Library/Mobile Documents/com~apple~CloudDocs/todotxt"
+    set TODO_PATH "$TODO_DIR/todo.txt"
+    set DONE_PATH "$TODO_DIR/done.txt"
+
     # ----------------------- dev framework / languages ----------------------- #
     source "$HOME/.cargo/env.fish"
 
@@ -40,6 +45,12 @@ if status is-login
     # set -x PATH $JAVA_HOME/bin $PATH
 
     set PATH $PATH ~/go/bin
+
+    # amp
+    set PATH $PATH ~/.local/bin
+
+    # bun
+    set PATH $PATH ~/.bun/bin
 
     # export DOTNET_ROOT /usr/local/share/dotnet
 end
@@ -60,6 +71,7 @@ if status is-interactive
 
     alias gui="gitui -t catppuccin-mocha.ron"
     alias vercel="vercel -t $VERCEL_KEY"
+    alias td="tuxedo"
 
     # --- git alias --- #
     alias ga='git add'

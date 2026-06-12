@@ -55,24 +55,6 @@ export DOTNET_ROOT=/usr/local/share/dotnet
 
 # ---                     zsh extensions                        --- #
 
-# # AnyBar script
-# function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
-
-# preexec() {
-#   anybar yellow
-# }
-
-# precmd() {
-#   local EXIT_CODE=$?
-#   if [ $EXIT_CODE -eq 0 ]; then
-#     anybar green
-#   else
-#     anybar red
-#   fi
-# }
-
-# fzf code
-
 # Set up fzf key bindings and fuzzy completion
 # eval "$(fzf --zsh --color=16)"
 
@@ -109,7 +91,7 @@ eval "$(zoxide init zsh)"
 # alias cd="z"
 
 # ------ Yazi (file manager) ------
-function yy() {
+function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -130,9 +112,9 @@ export PATH=$PATH:~/tools
 #     export EDITOR="nvim"
 # fi
 
-# Added by Antigravity
-export PATH="/Users/chunhua/.antigravity/antigravity/bin:$PATH"
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/chunhua/.sdkman"
 [[ -s "/Users/chunhua/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/chunhua/.sdkman/bin/sdkman-init.sh"
+
+# Amp CLI
+export PATH="$HOME/.local/bin:$PATH"

@@ -8,12 +8,29 @@
 // from the command palette or from `Zed` application menu.
 {
     // --------------------------- general --------------------------- //
+    "cli_default_open_behavior": "new_window",
+    "tabs": {
+        "close_position": "left"
+    },
+    "helix_mode": false,
+    "outline_panel": {
+        "dock": "left"
+    },
+    "collaboration_panel": {
+        "dock": "left"
+    },
+    "git_panel": {
+        "tree_view": false,
+        "dock": "left"
+    },
     "profiles": {
         "big_screen_mode": {
-            "ui_font_size": 14,
-            "buffer_font_size": 14,
-            "agent_buffer_font_size": 14,
-            "agent_ui_font_size": 16,
+            "settings": {
+                "ui_font_size": 14,
+                "buffer_font_size": 14,
+                "agent_buffer_font_size": 14,
+                "agent_ui_font_size": 16
+            }
         },
     },
     // --------------------------- UI & appearance --------------------------- //
@@ -25,14 +42,16 @@
     "ui_font_family": "JetBrainsMono Nerd Font",
     "ui_font_weight": 600,
     "buffer_line_height": "comfortable",
-    // jetbrains settings
-    "buffer_font_family": "JetBrainsMono Nerd Font",
-    "buffer_font_weight": 500,
-    "buffer_font_features": {
-        "calt": true,
-        "ss02": true,
-        "zero": true,
-    },
+
+    // // jetbrains settings
+    // "buffer_font_family": "JetBrainsMono Nerd Font",
+    // "buffer_font_weight": 500,
+    // "buffer_font_features": {
+    //     "calt": true,
+    //     "ss02": true,
+    //     "zero": true,
+    // },
+
     // // cascadia code settings
     // "buffer_font_family": "CaskaydiaCove Nerd Font Mono",
     // "buffer_font_features": {
@@ -43,11 +62,13 @@
     //     "ss20": true,
     //     "zero": true,
     // },
-    // // 0xProto settings
-    // "buffer_font_family": "0xProto Nerd Font",
-    // "buffer_font_features": {
-    //     "ss01": true,
-    // },
+
+    // 0xProto settings
+    "buffer_font_family": "0xProto Nerd Font",
+    "buffer_font_features": {
+        "ss01": true,
+    },
+    
     // ui
     "icon_theme": "Monospace Icon Theme - Dark",
     "theme": "Dracula Solid",
@@ -69,6 +90,7 @@
         "active_line_width": 2,
     },
     "project_panel": {
+        "dock": "left",
         "indent_size": 16,
         "sticky_scroll": false,
     },
@@ -100,7 +122,7 @@
     },
     // ------------------------------ editor ------------------------------ //
     "vim_mode": true,
-    "helix_mode": false,
+    // "helix_mode": true,
     // "relative_line_numbers": "enabled",
     // "vertical_scroll_margin": 999, // keep cursor at center
     "tab_size": 4,
@@ -183,6 +205,14 @@
             // "enable_language_server": false,
             "language_servers": ["!roslyn", "omnisharp"],
         },
+        "SQL": {
+            "formatter": {
+                "external": {
+                    "command": "sqlfluff",
+                    "arguments": ["fix", "{buffer_path}", "--dialect", "postgres"]
+                }
+            }
+        }
     },
     "lsp": {
         "ruff": {
@@ -279,11 +309,16 @@
     "show_edit_predictions": false,
     "language_models": {},
     "agent": {
+        "dock": "right",
+        "inline_assistant_model": {
+            "provider": "openrouter",
+            "model": "anthropic/claude-haiku-4.5",
+            "enable_thinking": false
+        },
         "default_model": {
-            "provider": "copilot_chat",
-            "model": "claude-sonnet-4.6",
+            "provider": "openrouter",
+            "model": "minimax/minimax-m3",
             "enable_thinking": true,
-            "effort": "medium",
         },
         "favorite_models": [],
         "model_parameters": [],
@@ -301,20 +336,8 @@
         "opencode": {
             "type": "registry",
         },
-        "github-copilot": {
-            "type": "registry",
-        },
-        "Github Copilot": {
-            "type": "custom",
-            "command": "copilot",
-            "args": [],
-            "env": {},
-            "favorite_models": [],
-            "default_config_options": {},
-            "favorite_config_option_values": {},
-        },
     },
-    "use_system_prompts": true,
+    "use_system_prompts": false,
     "use_system_path_prompts": false,
     // ---------------------------- others ---------------------------- //
     // avoid zed to collect data
@@ -323,8 +346,8 @@
         "metrics": false,
     },
     "command_aliases": {
-        "lsplg": "dev::openLanguageServerLogs",
-        "lg": "zed::openLog",
+        "lsplg": "dev::OpenLanguageServerLogs",
+        "lg": "zed::OpenLog",
     },
     "auto_install_extensions": {
         "dracula": true,

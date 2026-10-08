@@ -46,8 +46,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export ASEPRITE_HOME="$HOME/tools/aseprite"
 
-export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
-export JAVA_HOME="$(/usr/libexec/java_home)"
+# export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+# export JAVA_HOME="$(/usr/libexec/java_home)"
 
 export PATH=$PATH:~/go/bin
 
@@ -118,3 +118,8 @@ export SDKMAN_DIR="/Users/chunhua/.sdkman"
 
 # Amp CLI
 export PATH="$HOME/.local/bin:$PATH"
+
+# gib
+export GIB_INSTALL=/Users/chunhua/.gib
+export PATH=/Users/chunhua/.gib/bin:$PATH
+

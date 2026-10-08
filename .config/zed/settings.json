@@ -8,20 +8,21 @@
 // from the command palette or from `Zed` application menu.
 {
     // --------------------------- general --------------------------- //
+    "accessible_mode": false,
     "cli_default_open_behavior": "new_window",
     "tabs": {
-        "close_position": "left"
+        "close_position": "left",
     },
     "helix_mode": false,
     "outline_panel": {
-        "dock": "left"
+        "dock": "left",
     },
     "collaboration_panel": {
-        "dock": "left"
+        "dock": "left",
     },
     "git_panel": {
         "tree_view": false,
-        "dock": "left"
+        "dock": "left",
     },
     "profiles": {
         "big_screen_mode": {
@@ -29,8 +30,11 @@
                 "ui_font_size": 14,
                 "buffer_font_size": 14,
                 "agent_buffer_font_size": 14,
-                "agent_ui_font_size": 16
-            }
+                "agent_ui_font_size": 16,
+                "markdown_preview": {
+                    "font_size": 16,
+                }
+            },
         },
     },
     // --------------------------- UI & appearance --------------------------- //
@@ -44,13 +48,13 @@
     "buffer_line_height": "comfortable",
 
     // // jetbrains settings
-    // "buffer_font_family": "JetBrainsMono Nerd Font",
-    // "buffer_font_weight": 500,
-    // "buffer_font_features": {
-    //     "calt": true,
-    //     "ss02": true,
-    //     "zero": true,
-    // },
+    "buffer_font_family": "JetBrainsMono Nerd Font",
+    "buffer_font_weight": 500,
+    "buffer_font_features": {
+        "calt": true,
+        "ss02": true,
+        "zero": true,
+    },
 
     // // cascadia code settings
     // "buffer_font_family": "CaskaydiaCove Nerd Font Mono",
@@ -64,14 +68,19 @@
     // },
 
     // 0xProto settings
-    "buffer_font_family": "0xProto Nerd Font",
-    "buffer_font_features": {
-        "ss01": true,
+    // "buffer_font_family": "0xProto Nerd Font",
+    // "buffer_font_features": {
+    //     "ss01": true,
+    // },
+
+    // markdown
+    "markdown_preview": {
+        // "font_family": "Libron",
     },
-    
+
     // ui
     "icon_theme": "Monospace Icon Theme - Dark",
-    "theme": "Dracula Solid",
+    "theme": "Rosé Pine Dawn",
     "tab_bar": {
         "show_nav_history_buttons": false,
     },
@@ -100,8 +109,6 @@
         "delay_ms": 100,
     },
     "experimental.theme_overrides": {
-        // for aquarium theme: https://github.com/bIaqat/aquarium-theme-zed/pull/2
-        // "border.selected": "#303347ff",
         "syntax": {
             "comment": {
                 "font_style": "italic",
@@ -118,7 +125,7 @@
                 "font_weight": 600,
             },
         },
-        "predictive": "#666", // change suggestion color
+        // "predictive": "#666", // change suggestion color
     },
     // ------------------------------ editor ------------------------------ //
     "vim_mode": true,
@@ -141,6 +148,7 @@
     "remove_trailing_whitespace_on_save": false,
     "languages": {
         "Python": {
+            "show_edit_predictions": true,
             "language_servers": ["ruff", "ty", "!pyright", "!pyrefly"],
             "formatter": [
                 {
@@ -155,6 +163,9 @@
                     },
                 },
             ],
+            "code_actions_on_format": {
+                "source.fixAll.ruff": true,
+            },
             "format_on_save": "on",
         },
         "C++": {
@@ -172,8 +183,9 @@
         "JavaScript": {
             "formatter": {
                 "external": {
-                    "command": "prettier",
+                    "command": "npx",
                     "arguments": [
+                        "prettier",
                         "--stdin-filepath",
                         "{buffer_path}",
                         "--tab-width",
@@ -209,10 +221,15 @@
             "formatter": {
                 "external": {
                     "command": "sqlfluff",
-                    "arguments": ["fix", "{buffer_path}", "--dialect", "postgres"]
-                }
-            }
-        }
+                    "arguments": [
+                        "fix",
+                        "{buffer_path}",
+                        "--dialect",
+                        "postgres",
+                    ],
+                },
+            },
+        },
     },
     "lsp": {
         "ruff": {
@@ -221,8 +238,8 @@
                     "showSyntaxErrors": true,
                     "lineLength": 88,
                     "lint": {
-                        "select": ["ALL"],
-                        "extendSelect": ["I"],
+                        // "select": ["ALL"],
+                        // "extendSelect": ["I"],
                         // "ignore": ["F401"]
                     },
                 },
@@ -297,33 +314,58 @@
         },
     ],
     // ---------------------------- AI ---------------------------- //
-    // "edit_predictions": {
-    //     "provider": "zed",
-    //     "mode": "eager",
-    //     "copilot": {
-    //         "proxy": null,
-    //         "proxy_no_verify": null,
-    //     },
-    //     "enabled_in_text_threads": false,
-    // },
-    "show_edit_predictions": false,
+    "edit_predictions": {
+        "open_ai_compatible_api": {
+            "api_url": "https://openrouter.ai/api/v1/chat/completions",
+            "model": "minimax/minimax-m2.7",
+        },
+        "provider": "open_ai_compatible_api",
+        "mode": "eager",
+        "copilot": {
+            "proxy": null,
+            "proxy_no_verify": null,
+        },
+    },
+    "show_edit_predictions": true,
     "language_models": {},
     "agent": {
+        "tool_permissions": {
+            "tools": {
+                "terminal": {
+                    "always_allow": [
+                        {
+                            "pattern": "^git\\b",
+                        },
+                        {
+                            "pattern": "^tail\\b",
+                        },
+                    ],
+                },
+            },
+        },
         "dock": "right",
         "inline_assistant_model": {
             "provider": "openrouter",
-            "model": "anthropic/claude-haiku-4.5",
-            "enable_thinking": false
+            "model": "deepseek/deepseek-v4.1-flash",
+            "enable_thinking": false,
         },
         "default_model": {
+            "effort": "high",
             "provider": "openrouter",
-            "model": "minimax/minimax-m3",
+            "model": "deepseek/deepseek-v4.1-flash",
             "enable_thinking": true,
         },
         "favorite_models": [],
         "model_parameters": [],
     },
     "agent_servers": {
+        "pi-acp": {
+            "default_config_options": {
+                "thought_level": "medium",
+                "model": "deepseek/deepseek-flash",
+            },
+            "type": "registry",
+        },
         "claude-acp": {
             "type": "registry",
         },
@@ -335,6 +377,13 @@
         },
         "opencode": {
             "type": "registry",
+        },
+    },
+    "context_servers": {
+        "Astro docs": {
+            "settings": {},
+            "enabled": true,
+            "url": "https://mcp.docs.astro.build/mcp",
         },
     },
     "use_system_prompts": false,

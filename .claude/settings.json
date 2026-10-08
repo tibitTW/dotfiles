@@ -20,5 +20,6 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true
   },
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "theme": "dark-daltonized"
 }

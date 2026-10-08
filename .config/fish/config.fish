@@ -35,6 +35,10 @@ if status is-login
     # ----------------------- dev framework / languages ----------------------- #
     source "$HOME/.cargo/env.fish"
 
+    set ZVM_INSTALL "$HOME/.zvm/self"
+    set PATH $PATH $HOME/.zvm/bin
+    set PATH $PATH $ZVM_INSTALL/
+
     # fundle plugin FabioAntunes/fish-nvm
     # fundle plugin edc/bass
     # fundle init

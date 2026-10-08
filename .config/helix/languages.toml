@@ -23,6 +23,14 @@ args = ["server"]
 command = "ty"
 args = ["server"]
 
+[[language]]
+name = "zig"
+auto-format = true
+language-servers = [ "zls" ]
+
+[language-server.zls]
+command = "zls"
+
 [language-server.rust-analyzer.config.check]
 command = "clippy"
 

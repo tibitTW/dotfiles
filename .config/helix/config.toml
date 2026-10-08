@@ -5,12 +5,9 @@ theme = "dracula"
 [editor]
 line-number = "relative"
 bufferline = "multiple"
-
-[editor.cursor-shape]
-insert = "underline"
-
-[editor.whitespace.render]
-tab = "all"
+soft-wrap.enable = true
+cursor-shape.insert = "underline"
+whitespace.render.tab = "all"
 
 [editor.indent-guides]
 render = true

@@ -6,6 +6,8 @@
 [user]
 	name = chunhua
 	email = chunhua.2147483647@gmail.com
+[includeIf "gitdir:~/gyro_projects/"]
+	path = ~/.gitconfig-gyro
 [commit]
 	cleanup = strip
 [gitbutler]

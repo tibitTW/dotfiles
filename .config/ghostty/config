@@ -2,6 +2,7 @@
 font-size = 14
 font-family = "JetBrainsMono Nerd Font"
 # font-family = "Lantinghei TC"
+window-title-font-family = "0xproto Nerd Font Mono"
 
 font-codepoint-map = "U+4E00-U+9FFF,U+3400-U+4DBF = IBM Plex Sans TC Text"
 adjust-cell-width = "-10%"
@@ -11,13 +12,12 @@ adjust-icon-height = "-20%"
 window-padding-x = 8
 window-padding-y = 4
 
-background-opacity = 0.75
+# background-opacity = 0.85
 background-blur = true
 
-window-theme = dark
-theme = dracula
+window-theme = light
 # theme = Kanagawa Dragon
-# theme = light:rose-pine-dawn,dark:rose-pine
+theme = light:"Rose Pine Dawn",dark: "Dracula"
 
 shell-integration-features = no-cursor
 cursor-style = block

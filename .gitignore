@@ -7,3 +7,6 @@ Library/Rime/user.yaml
 Library/Rime/installation.yaml
 
 .DS_Store
+
+# Zed prompt library runtime lock
+.config/zed/prompts/prompts-library-db.0.mdb/lock.mdb

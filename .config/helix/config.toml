@@ -1,6 +1,4 @@
-# theme = "kanagawa"
-theme = "dracula"
-# theme = "kanagawa-dragon"
+theme = "base16_transparent"
 
 [editor]
 line-number = "relative"
@@ -8,6 +6,9 @@ bufferline = "multiple"
 soft-wrap.enable = true
 cursor-shape.insert = "underline"
 whitespace.render.tab = "all"
+
+[editor.file-picker]
+hidden = false
 
 [editor.indent-guides]
 render = true

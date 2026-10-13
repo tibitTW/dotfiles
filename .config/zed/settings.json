@@ -33,7 +33,7 @@
                 "agent_ui_font_size": 16,
                 "markdown_preview": {
                     "font_size": 16,
-                }
+                },
             },
         },
     },
@@ -166,7 +166,7 @@
             "code_actions_on_format": {
                 "source.fixAll.ruff": true,
             },
-            "format_on_save": "on",
+            "format_on_save": "off",
         },
         "C++": {
             "formatter": {
@@ -299,25 +299,39 @@
             "args": [],
             "projects": [
                 {
-                    "paths": ["/home/nvh/gitlab/qapi2"],
+                    "paths": [
+                        "/home/nvh/gitlab/qapi2"
+                    ]
                 },
                 {
-                    "paths": ["/home/nvh/gitlab/qapi4"],
+                    "paths": [
+                        "/home/nvh/gitlab/qapi4"
+                    ]
                 },
                 {
-                    "paths": ["/home/nvh/gitlab/qconfig/./"],
+                    "paths": [
+                        "/home/nvh/gitlab/qconfig/./"
+                    ]
                 },
                 {
-                    "paths": ["/home/nvh/gitlab/qsmis"],
-                },
-            ],
+                    "paths": [
+                        "/home/nvh/gitlab/qsmis"
+                    ]
+                }
+            ]
         },
+        {
+            "host": "192.168.0.221",
+            "username": "mcsadmin",
+            "args": [],
+            "projects": []
+        }
     ],
     // ---------------------------- AI ---------------------------- //
     "edit_predictions": {
         "open_ai_compatible_api": {
-            "api_url": "https://openrouter.ai/api/v1/chat/completions",
-            "model": "minimax/minimax-m2.7",
+            "api_url": "https://opencode.ai/zen/go/v1/chat/completions",
+            "model": "deepseek/deepseek-v4.1-flash",
         },
         "provider": "open_ai_compatible_api",
         "mode": "eager",
@@ -361,8 +375,8 @@
     "agent_servers": {
         "pi-acp": {
             "default_config_options": {
-                "thought_level": "medium",
-                "model": "deepseek/deepseek-flash",
+                "thought_level": "high",
+                "model": "opencode-go/deepseek-v4.1-flash",
             },
             "type": "registry",
         },

@@ -53,12 +53,6 @@
             "cmd-shift-i": "editor::FormatSelections",
         },
     },
-    // {
-    //     "context": "(Editor && selecting)",
-    //     "bindings": {
-    //         "cmd-shift-i": "editor::FormatSelections",
-    //     },
-    // },
     {
         "context": "(VimControl && !menu)",
         "bindings": {

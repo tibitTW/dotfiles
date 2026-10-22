@@ -50,7 +50,7 @@ if status is-login
 
     set PATH $PATH ~/go/bin
 
-    # amp
+    # amp / pi
     set PATH $PATH ~/.local/bin
 
     # bun

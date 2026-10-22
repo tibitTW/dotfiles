@@ -1,0 +1,197 @@
+#!/bin/bash
+
+HIGHLIGHT=0xff7aa2f7
+HIGHLIGHT_SOFT=0x337aa2f7
+FOREGROUND=0xffffffff
+BACKGROUND=0xff000000
+TRANSPARENT=0x00000000
+
+CONTENT_HEIGHT=24
+
+bar=(
+    position=top
+    y_offset=6
+    height=28
+    color=$TRANSPARENT
+    notch_width=200
+    padding_left=9
+    padding_right=28
+)
+
+sketchybar --bar "${bar[@]}"
+
+default=(
+    icon.font="JetBrainsMono Nerd Font Mono:Bold:11.0"
+    label.font="JetBrainsMono Nerd Font Mono:Bold:11.0"
+    icon.color=$FOREGROUND
+    label.color=$FOREGROUND
+    icon.align=center
+    label.align=center
+    label.padding_left=8
+    label.padding_right=8
+    icon.padding_left=8
+    icon.padding_right=8
+    background.drawing=on
+    background.color=$BACKGROUND
+    background.height=24
+    background.corner_radius=0
+)
+
+default_left=(
+    background.padding_right=8
+)
+
+default_right=(
+    background.padding_left=8
+)
+
+sketchybar --default "${default[@]}"
+
+# 最左邊的 Apple 圖示
+APPLE_ICON=$'\xef\x85\xb9' # Nerd Font nf-fa-apple (U+F179)
+sketchybar --add item apple.logo left \
+    --set apple.logo \
+    icon="$APPLE_ICON" \
+    icon.font="JetBrainsMono Nerd Font Mono:bold:18.0" \
+    icon.width=24 \
+    icon.align=center \
+    icon.y_offset=1 \
+    label.drawing=off \
+    background.x_offset=-0.5 \
+    background.corner_radius=9999 \
+    background.padding_right=8 \
+    background.shadow.drawing=off
+
+# Space 版面參數
+SPACE_W=$CONTENT_HEIGHT
+PILL_W=$CONTENT_HEIGHT
+
+YABAI_SPACES=$(yabai -m query --spaces 2>/dev/null)
+
+SPACE_COUNT=$(printf '%s' "$YABAI_SPACES" | jq 'length' 2>/dev/null)
+if [ "${SPACE_COUNT:-0}" -gt 0 ] 2>/dev/null; then
+    # 每個 display 的 space 清單，一行一個 display
+    DISPLAY_GROUPS=$(printf '%s' "$YABAI_SPACES" | jq -r \
+        'sort_by(.display) | group_by(.display)[] | map(.index | tostring) | join(" ")')
+fi
+
+# Space 指示器，點擊切換
+# 每個 space 固定寬度，讓滑動的 highlight 方塊位置可預測
+#
+# 版面目標：border(2px) - gap(2px) - space - gap(2px) - divider - gap(2px) - space - ... - gap(2px) - border(2px)
+# bracket 的 border 是畫在內容框「最外側」2px，跟 icon 的白色方塊同色、緊貼在一起時完全看不出來，
+# 而且 bracket 自己的 background.padding_left/right 對畫面沒有實際效果（測試過，設多少都沒差）。
+# 所以 border 跟內容之間的 2px 空隙，只能靠整個 bracket 第一個/最後一個 item 自己的
+# background.padding_left / padding_right 多留 4px（2px border + 2px gap）撐出來；
+# 其餘 item（包含 divider）一律只在自己的 padding_left 留 2px，跟前一個 item 的間距就靠這 2px，
+# 不額外疊加，兩邊間距才會一致。
+FIRST_GROUP=1
+FIRST_ITEM=1
+DIVIDER_IDX=0
+LAST_SID=""
+while read -r GROUP; do
+    [ -z "$GROUP" ] && continue
+    read -ra GROUP_IDS <<<"$GROUP"
+
+    # 不同 display 的 space 之間插一條分隔線，名字仍以 space. 開頭才會被上面的 bracket 吃進去
+    #
+    # 線本身的寬度故意不用 item 的 width= 設，改用 icon.width：
+    # sketchybar 對用 width= 撐出固定寬度的 item 有個怪癖，緊接在它後面那個 item 的
+    # padding_left 會少算 2px（測試過，不管 width 設多少都一樣），導致右邊間距變成 0；
+    # 寬度改成讓 icon 自己撐出來（icon 本身不可見，靠 icon.background 畫線）就不會有這個問題。
+    if [ "$FIRST_GROUP" -eq 0 ]; then
+        DIVIDER_IDX=$((DIVIDER_IDX + 1))
+        sketchybar --add item space.divider.$DIVIDER_IDX left \
+            --set space.divider.$DIVIDER_IDX \
+            width=dynamic \
+            icon.drawing=on \
+            icon=" " \
+            icon.color=$TRANSPARENT \
+            icon.padding_left=0 \
+            icon.padding_right=0 \
+            icon.width=2 \
+            icon.background.drawing=on \
+            icon.background.color=$BACKGROUND \
+            icon.background.height=24 \
+            icon.background.corner_radius=0 \
+            label.drawing=off \
+            background.drawing=off \
+            background.padding_left=2 \
+            background.padding_right=0 \
+            click_script="" \
+            background.shadow.drawing=off
+    fi
+    FIRST_GROUP=0
+
+    for sid in "${GROUP_IDS[@]}"; do
+        pad_left=2
+        [ "$FIRST_ITEM" -eq 1 ] && pad_left=4
+        FIRST_ITEM=0
+        sketchybar --add space space.$sid left \
+            --set space.$sid \
+            space=$sid \
+            ignore_association=on \
+            icon=$sid \
+            icon.align=center \
+            icon.highlight_color=$BACKGROUND \
+            icon.color=$FOREGROUND \
+            icon.background.drawing=on \
+            icon.background.color=$BACKGROUND \
+            icon.height=16 \
+            icon.width=16 \
+            icon.background.height=16 \
+            label.drawing=off \
+            background.drawing=off \
+            background.padding_left=$pad_left \
+            background.padding_right=0 \
+            script="FOREGROUND=$FOREGROUND BACKGROUND=$BACKGROUND $HOME/.config/sketchybar/plugins/space_highlight.sh" \
+            click_script="yabai -m space --focus $sid"
+        LAST_SID=$sid
+    done
+done <<<"$DISPLAY_GROUPS"
+
+# 整個 bracket 最後一個 space 要跟右邊的 border 留 4px（2px border + 2px gap）
+[ -n "$LAST_SID" ] && sketchybar --set "space.$LAST_SID" background.padding_right=4
+
+sketchybar --add bracket spaces '/space\..*/' \
+    --set spaces background.border_color=$BACKGROUND \
+    background.color=$TRANSPARENT \
+    background.border_width=2 \
+    background.drawing=on \
+    background.height=24
+
+# 目前使用的 app 名稱
+sketchybar --add item front_app left \
+    --set front_app \
+    icon.drawing=off \
+    background.padding_left=8 \
+    script='sketchybar --set $NAME label="$INFO"' \
+    --subscribe front_app front_app_switched
+
+time=(
+    update_freq=10
+    icon.drawing=off
+    script="$HOME/.config/sketchybar/plugins/clock.sh"
+    background.padding_left=8
+)
+
+# 時間
+sketchybar --add item clock right \
+    --set clock "${time[@]}"
+
+battery=(
+    update_freq=120
+    script="$HOME/.config/sketchybar/plugins/battery.sh"
+    label.padding_left=0
+    icon.padding_right=4
+)
+
+# 電量
+sketchybar --add item battery right \
+    --set battery "${battery[@]}" \
+    --subscribe battery system_woke power_source_change
+
+sketchybar --update
+sketchybar --trigger space_change
+
+echo "$(date +%H:%M:%S)" >>/tmp/rc.log

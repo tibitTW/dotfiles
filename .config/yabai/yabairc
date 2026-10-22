@@ -6,6 +6,13 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# sketchybar 的 space 清單是在 config 產生時一次算好的，新增/刪除 space 或插拔螢幕
+# 都要讓它重新產生 config 才會反映最新的 space 數量
+yabai -m signal --add event=space_created action="sketchybar --reload"
+yabai -m signal --add event=space_destroyed action="sketchybar --reload"
+yabai -m signal --add event=display_added action="sketchybar --reload"
+yabai -m signal --add event=display_removed action="sketchybar --reload"
+
 # space 配置
 # yabai -m config layout bsp
 yabai -m config layout float

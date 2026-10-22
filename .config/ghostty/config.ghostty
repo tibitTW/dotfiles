@@ -1,4 +1,5 @@
-font-size = 14
+# font-family = "0xProto Nerd Font"
+font-size = 13
 font-family = "JetBrainsMono Nerd Font"
 window-title-font-family = "0xproto Nerd Font Mono"
 
@@ -20,13 +21,16 @@ cursor-style-blink = false
 
 custom-shader = shaders/cursor_fire_rev.glsl
 
-command = /opt/homebrew/bin/fish --login --interactive
+command = shell:if [ "$(uname)" = "Darwin" ]; then exec /opt/homebrew/bin/fish --login --interactive; else exec /usr/bin/fish --login --interactive; fi
+# command = fish --login --interactive
 
 macos-non-native-fullscreen = visible-menu
 macos-option-as-alt = true
 macos-titlebar-style = tabs
 macos-icon = xray
 macos-window-buttons = hidden
+window-decoration = client
+gtk-titlebar = false
 
 # --- keybinding --- #
 # negivation

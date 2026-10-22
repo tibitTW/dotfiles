@@ -4,12 +4,11 @@ if status is-login
     source $HOME/dotfiles/scripts/load_api_keys.fish || echo "load api keys failed!"
 
     # ----------------------------- tools ----------------------------- #
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    if test (uname) = Darwin
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    end
 
-    set -gx EDITOR vim
-
-    # TODO: replace to fish version
-    # bindkey '^I^I' autosuggest-accept
+    set -gx EDITOR hx
 
     # Yazi (file manager)
     function y
@@ -21,9 +20,6 @@ if status is-login
         rm -f -- "$tmp"
     end
 
-    # Zoxide
-    zoxide init fish | source
-
     # Set up fzf key bindings
     fzf --fish | source
 
@@ -33,7 +29,9 @@ if status is-login
     set DONE_PATH "$TODO_DIR/done.txt"
 
     # ----------------------- dev framework / languages ----------------------- #
-    source "$HOME/.cargo/env.fish"
+    if test -f "$HOME/.cargo/env.fish":
+        source "$HOME/.cargo/env.fish"
+    end
 
     set ZVM_INSTALL "$HOME/.zvm/self"
     set PATH $PATH $HOME/.zvm/bin

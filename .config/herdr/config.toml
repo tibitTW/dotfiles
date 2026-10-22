@@ -1,0 +1,16 @@
+onboarding = false
+
+[ui]
+status_indicators = "dots"
+
+[theme]
+name = "terminal"
+# auto_switch = true
+# light_name = "rose-pine-dawn"
+# dark_name = "rose-pine"
+
+[keys]
+prefix = "ctrl+space"
+
+[terminal]
+default_shell = "fish"

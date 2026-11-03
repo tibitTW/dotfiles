@@ -6,7 +6,9 @@
 [user]
 	name = chunhua
 	email = chunhua.2147483647@gmail.com
-[includeIf "gitdir:~/gyro_projects/"]
+[includeIf "gitdir:~/gyro/"]
+	path = ~/.gitconfig-gyro
+[includeIf "gitdir:~/gyro.*/"]
 	path = ~/.gitconfig-gyro
 [commit]
 	cleanup = strip
@@ -34,7 +36,7 @@
     # dark = true
     # light = true
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 [diff]
     colorMoved = default
 [alias]

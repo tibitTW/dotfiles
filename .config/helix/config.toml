@@ -1,11 +1,18 @@
 theme = "base16_transparent"
 
 [editor]
+mouse = true
 line-number = "relative"
 bufferline = "multiple"
 soft-wrap.enable = true
 cursor-shape.insert = "underline"
 whitespace.render.tab = "all"
+popup-border = "popup"
+# end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+prefix-len = 2
 
 [editor.file-picker]
 hidden = false

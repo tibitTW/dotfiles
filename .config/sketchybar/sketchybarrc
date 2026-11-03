@@ -2,8 +2,8 @@
 
 HIGHLIGHT=0xff7aa2f7
 HIGHLIGHT_SOFT=0x337aa2f7
-FOREGROUND=0xffffffff
-BACKGROUND=0xff000000
+FOREGROUND=0xff000000
+BACKGROUND=0xffffffff
 TRANSPARENT=0x00000000
 
 CONTENT_HEIGHT=24
@@ -179,17 +179,45 @@ time=(
 sketchybar --add item clock right \
     --set clock "${time[@]}"
 
+# # 控制中心：音量、Wi-Fi，用 bracket 包成一個群組
+# volume=(
+#     update_freq=5
+#     script="$HOME/.config/sketchybar/plugins/volume.sh"
+#     icon.font="JetBrainsMono Nerd Font Mono:Bold:16.0"
+#     label.drawing=off
+# )
+
+# sketchybar --add item volume right \
+#     --set volume "${volume[@]}" \
+#     --subscribe volume volume_change
+
 battery=(
     update_freq=120
     script="$HOME/.config/sketchybar/plugins/battery.sh"
+    click_script="$HOME/.config/sketchybar/plugins/battery_click.sh"
     label.padding_left=0
     icon.padding_right=4
+    background.padding_left=8
 )
 
 # 電量
 sketchybar --add item battery right \
     --set battery "${battery[@]}" \
     --subscribe battery system_woke power_source_change
+
+flow=(
+    update_freq=1
+    script="FOREGROUND=$FOREGROUND BACKGROUND=$BACKGROUND $HOME/.config/sketchybar/plugins/flow.sh"
+    click_script="$HOME/.config/sketchybar/plugins/flow_click.sh"
+    icon.font="JetBrainsMono Nerd Font Mono:Bold:16.0"
+    label.padding_left=0
+    icon.padding_right=4
+    background.padding_left=8
+)
+
+# 番茄鐘（Flow App）：左鍵開始/暫停，右鍵開啟 Flow 視窗
+sketchybar --add item flow right \
+    --set flow "${flow[@]}"
 
 sketchybar --update
 sketchybar --trigger space_change

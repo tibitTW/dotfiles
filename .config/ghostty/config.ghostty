@@ -1,10 +1,8 @@
-# font-family = "0xProto Nerd Font"
-font-size = 13
+font-size = 14
 font-family = "JetBrainsMono Nerd Font"
 window-title-font-family = "0xproto Nerd Font Mono"
 
 font-codepoint-map = "U+4E00-U+9FFF,U+3400-U+4DBF = IBM Plex Sans TC Text"
-# font-codepoint-map = "U+4E00-U+9FFF,U+3400-U+4DBF = Lantinghei TC"
 adjust-cell-width = "-10%"
 adjust-cell-height = "5%"
 adjust-icon-height = "20%"
@@ -12,17 +10,23 @@ adjust-icon-height = "20%"
 window-padding-x = 8
 window-padding-y = 4
 
-window-theme = dark
-theme = light:"Dawnfox",dark: "Dracula"
+# window-theme = dark
+# theme = light:"Dawnfox",dark: "Dracula"
+# theme = "Rose Pine Dawn"
+theme = "Kanagawa Wave"
 
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
 
-custom-shader = shaders/cursor_fire_rev.glsl
+background-opacity = 0.97
+background-blur = macos-glass-clear
+unfocused-split-opacity = 1
 
-command = shell:if [ "$(uname)" = "Darwin" ]; then exec /opt/homebrew/bin/fish --login --interactive; else exec /usr/bin/fish --login --interactive; fi
-# command = fish --login --interactive
+custom-shader = shaders/cursor_fire_rev.glsl
+custom-shader = shaders/cursor_lightning.glsl
+
+command = /bin/sh -c 'for f in /opt/homebrew/bin/fish /home/linuxbrew/.linuxbrew/bin/fish /usr/bin/fish; do [ -x $f ] && exec $f -l -i; done'
 
 macos-non-native-fullscreen = visible-menu
 macos-option-as-alt = true
@@ -40,11 +44,11 @@ keybind = option+k=goto_split:top
 keybind = option+l=goto_split:right
 keybind = shift+escape=toggle_split_zoom
 
-# keybind = global:ctrl+T=toggle_quick_terminal
-# quick-terminal-position = center
-# quick-terminal-animation-duration = 0
+keybind = global:alt+space=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-animation-duration = 0
 
 # shell-integration-features = ssh-env, ssh-terminfo
 keybind = shift+enter=text:\x1b\r
 
-auto-update-channel = tip
+# auto-update-channel = tip

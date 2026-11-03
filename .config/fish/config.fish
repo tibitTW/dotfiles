@@ -34,6 +34,7 @@ if status is-login
     end
 
     set ZVM_INSTALL "$HOME/.zvm/self"
+
     set PATH $PATH $HOME/.zvm/bin
     set PATH $PATH $ZVM_INSTALL/
 
@@ -54,13 +55,15 @@ if status is-login
     # bun
     set PATH $PATH ~/.bun/bin
 
-    # export DOTNET_ROOT /usr/local/share/dotnet
+    # add vscode lsp
+    fish_add_path "/Users/chunhua/.nvm/versions/node/v24.21.0"
+
 end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
-    alias python="python3"
+    # alias python="python3"
     alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
     alias l="ls"
     alias ll="eza --color=always --long --git --icons=always --all"
@@ -71,9 +74,7 @@ if status is-interactive
     alias pping="prettyping"
     alias zlj="zellij"
 
-    alias gui="gitui -t catppuccin-mocha.ron"
     alias vercel="vercel -t $VERCEL_KEY"
-    alias td="tuxedo"
 
     # --- git alias --- #
     alias ga='git add'
@@ -101,6 +102,8 @@ if status is-interactive
     # use starship for prompt customize
     set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
     starship init fish | source
+
+    zoxide init fish | source
 end
 
 if test "$TERM_PROGRAM" = ghostty

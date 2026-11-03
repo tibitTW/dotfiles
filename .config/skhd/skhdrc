@@ -9,10 +9,12 @@
 
 # # space negivation
 # ctrl - left : yabai -m space --focus prev || yabai -m space --focus last
-ctrl - 0x21 : yabai -m space --focus prev || yabai -m space --focus last    # ctrl + [, old code 0xDB
+# ctrl - 0x21 : yabai -m space --focus prev || yabai -m space --focus last    # ctrl + [, old code 0xDB
+ctrl - 0x21 : yabai -m space --focus prev  # ctrl + [, old code 0xDB
 
 # ctrl - right: yabai -m space --focus next || yabai -m space --focus first
-ctrl - 0x1E : yabai -m space --focus next || yabai -m space --focus first   # ctrl + ], old code 0xDD
+# ctrl - 0x1E : yabai -m space --focus next || yabai -m space --focus first   # ctrl + ], old code 0xDD
+ctrl - 0x1E : yabai -m space --focus next  # ctrl + ], old code 0xDD
 
 ctrl - 1 : yabai -m space --focus 1
 ctrl - 2 : yabai -m space --focus 2
@@ -73,4 +75,3 @@ ctrl + alt - n : yabai -m display --focus next || yabai -m display --focus first
 	# target=$(yabai -m query --spaces | jq '.[] | select(."has-focus" == true).index'); \
 	# yabai -m space --destroy; \
 	# yabai -m space --focus $target || yabai -m space --focus $((target - 1))
-

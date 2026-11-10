@@ -1,0 +1,192 @@
+# ===  Taps  ===
+
+# skhd & yabai
+tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git", trusted: true
+
+# sketchybar
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
+
+# bm/beautiful mermaid cli
+tap "okooo5km/tap", trusted: true
+
+# 唯音輸入法
+tap "windwords/vchewing", trusted: true if OS.mac?
+
+# sdkman!
+tap "sdkman/tap", trusted: true
+
+# 私人 tap
+tap "chunhua/local", trusted: true
+
+# ===  終端機與 Shell  ===
+
+cask "ghostty"
+brew "fish"
+brew "starship"
+brew "tmux"
+brew "tpm"
+brew "herdr"
+brew "zoxide"
+brew "fzf"
+
+# ===  編輯器與 IDE  ===
+
+brew "helix"
+cask "visual-studio-code"
+cask "zed"
+
+# ===  Git 工具  ===
+
+brew "jj"
+brew "lazygit"
+brew "git-delta"
+cask "fork"
+cask "gitbutler"
+
+# ===  開發語言與工具鏈  ===
+# TODO: use nix instead
+
+brew "go"
+tap "oven-sh/bun", trusted: true
+brew "oven-sh/bun/bun"
+brew "nvm"
+brew "sdkman/tap/sdkman-cli"
+brew "clang-format"
+brew "cmake"
+brew "shfmt"
+brew "vercel"
+brew "okooo5km/tap/bm", trusted: true
+brew "lima"
+brew "qemu"
+cask "xquartz"
+
+go "github.com/lasorda/protobuf-language-server"
+cargo "tauri-cli"
+cargo "rustlings"
+uv "ruff"
+uv "ty"
+
+# ===  AI 工具  ===
+
+brew "opencode"
+cask "claude-code"
+cask "cherry-studio"
+cask "ghostex"
+cask "skills-manager"
+cask "typeless"
+
+# ===  macOS 系統與視窗管理  ===
+
+brew "asmvik/formulae/yabai", args: ["HEAD"]
+brew "felixkratz/formulae/sketchybar"
+cask "rectangle"
+cask "alt-tab"
+cask "raycast"
+cask "aldente"
+cask "betterdisplay"
+cask "lulu"
+cask "linearmouse"
+cask "vorssaint"
+cask "itsycal"
+cask "appcleaner"
+cask "hammerspoon"
+cask "music-decoy"
+
+# ===  輸入法  ===
+
+cask "windwords/vchewing"
+cask "squirrel-app"
+cask "karabiner-elements"
+
+# ===  CLI 文字與檔案工具  ===
+
+brew "ripgrep"
+brew "fd"
+brew "bat"
+brew "eza"
+brew "jq"
+brew "pandoc"
+brew "glow"
+brew "tlrc"
+brew "tre-command"
+brew "yazi"
+cask "marta"
+brew "stow"
+cask "keka"
+cask "balenaetcher"
+brew "fswatch"
+
+# ===  系統監控  ===
+
+brew "btop"
+brew "fastfetch"
+
+# ===  網路與遠端  ===
+
+cask "vivaldi"
+cask "google-chrome"
+cask "google-drive"
+cask "zerotier-one"
+brew "mole"
+brew "mtr"
+brew "gping"
+brew "prettyping"
+cask "anydesk"
+cask "rustdesk"
+cask "httpie-desktop"
+
+# ===  多媒體  ===
+
+brew "ffmpeg"
+brew "imagemagick"
+brew "ghostscript"
+cask "iina"
+cask "foobar2000"
+brew "spek"
+cask "quickrecorder"
+cask "shottr"
+cask "keycastr"
+cask "aegisub"
+cask "blender"
+cask "affinity"
+cask "chunhua/local/darktable", trusted: true
+
+# ===  生產力與知識管理  ===
+
+cask "obsidian"
+cask "heptabase"
+cask "antinote"
+cask "onlyoffice"
+cask "espanso"
+cask "qlmarkdown"
+cask "skim"
+cask "db-browser-for-sqlite"
+
+# ===  娛樂  ===
+
+cask "steam"
+cask "prismlauncher"
+cask "spotify"
+
+# ===  安全  ===
+
+brew "gnupg"
+brew "sshpass"
+
+# ===  字體  ===
+
+cask "font-0xproto-nerd-font"
+cask "font-caskaydia-cove-nerd-font"
+cask "font-genryumin"
+cask "font-genwanmin"
+cask "font-ibm-plex-sans-tc"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-noto-sans-cjk-tc"
+cask "font-ocr"
+
+# ===  待分類  ===
+brew "duti"
+brew "firefox"
+brew "contraste"
+cask "dockdoor"
+brew "typst"

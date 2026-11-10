@@ -10,30 +10,12 @@ if status is-login
 
     set -gx EDITOR hx
 
-    # Yazi (file manager)
-    function y
-        set tmp (mktemp -t "yazi-cwd.XXXXXX")
-        yazi $argv --cwd-file="$tmp"
-        if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-            builtin cd -- "$cwd"
-        end
-        rm -f -- "$tmp"
-    end
-
-    # Set up fzf key bindings
-    fzf --fish | source
-
-    # tuxedo
-    set -gx TODO_DIR "$HOME/Library/Mobile Documents/com~apple~CloudDocs/todotxt"
-    set TODO_PATH "$TODO_DIR/todo.txt"
-    set DONE_PATH "$TODO_DIR/done.txt"
-
     # ----------------------- dev framework / languages ----------------------- #
     if test -f "$HOME/.cargo/env.fish":
         source "$HOME/.cargo/env.fish"
     end
 
-    set ZVM_INSTALL "$HOME/.zvm/self"
+    set -gx ZVM_INSTALL "$HOME/.zvm/self"
 
     set PATH $PATH $HOME/.zvm/bin
     set PATH $PATH $ZVM_INSTALL/
@@ -42,10 +24,7 @@ if status is-login
     # fundle plugin edc/bass
     # fundle init
 
-    set ASEPRITE_HOME "$HOME/tools/aseprite"
-
-    # set JAVA_HOME "$(/usr/libexec/java_home)"
-    # set -x PATH $JAVA_HOME/bin $PATH
+    set -gx ASEPRITE_HOME "$HOME/tools/aseprite"
 
     set PATH $PATH ~/go/bin
 
@@ -54,67 +33,64 @@ if status is-login
 
     # bun
     set PATH $PATH ~/.bun/bin
-
-    # add vscode lsp
-    fish_add_path "/Users/chunhua/.nvm/versions/node/v24.21.0"
-
 end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
     # alias python="python3"
-    alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-    alias l="ls"
-    alias ll="eza --color=always --long --git --icons=always --all"
-    alias cls="clear"
-    alias q="exit"
-    alias ipy="ipython"
-    alias lg="lazygit"
-    alias pping="prettyping"
-    alias zlj="zellij"
+    abbr -a l "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+    abbr -a ls "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+    abbr -a ll "eza --color=always --long --git --icons=always --all"
+    abbr -a cls clear
+    abbr -a q exit
+    abbr -a ipy ipython
+    abbr -a lg lazygit
+    abbr -a pping prettyping
+    abbr -a zlj zellij
 
-    alias vercel="vercel -t $VERCEL_KEY"
+    alias vercel='vercel -t $VERCEL_KEY'
 
     # --- git alias --- #
-    alias ga='git add'
-    alias gap='ga --patch'
-    alias gb='git branch'
-    alias gba='gb --all'
-    alias gc='git commit'
-    alias gca='gc --amend --no-edit'
-    alias gce='gc --amend'
-    alias gco='git checkout'
-    alias gcl='git clone --recursive'
-    alias gd='git diff --output-indicator-new=" " --output-indicator-old=" "'
-    alias gds='gd --staged'
-    alias gi='git init'
-    alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
-    alias gm='git merge'
-    alias gn='git checkout -b' # new branch
-    alias gp='git push'
-    alias gpf='git push -f'
-    alias gr='git reset'
-    alias gss='git status --short'
-    alias gu='git pull'
+    abbr -a ga 'git add'
+    abbr -a gap 'ga --patch'
+    abbr -a gb 'git branch'
+    abbr -a gba 'gb --all'
+    abbr -a gc 'git commit'
+    abbr -a gca 'gc --amend --no-edit'
+    abbr -a gce 'gc --amend'
+    abbr -a gco 'git checkout'
+    abbr -a gcl 'git clone --recursive'
+    abbr -a gd 'git diff'
+    abbr -a gds 'gd --staged'
+    abbr -a gi 'git init'
+    abbr -a gl 'git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
+    abbr -a gm 'git merge'
+    abbr -a gn 'git checkout -b' # new branch
+    abbr -a gp 'git push'
+    abbr -a gpf 'git push -f'
+    abbr -a gr 'git reset'
+    abbr -a gss 'git status --short'
+    abbr -a gu 'git pull'
 
     # -------------------- tools -------------------- #
     # use starship for prompt customize
     set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
     starship init fish | source
-
     zoxide init fish | source
+    fzf --fish | source
+    direnv hook fish | source
+
+    function python_venv --on-variable PWD
+        set myvenv ./.venv
+        if test -d $myvenv
+            source $myvenv/bin/activate.fish
+        else if type -q deactivate
+            deactivate
+        end
+    end
 end
 
 if test "$TERM_PROGRAM" = ghostty
     set -x TERM xterm-256color
-end
-
-function python_venv --on-variable PWD
-    set myvenv ./.venv
-    if test -d $myvenv
-        source $myvenv/bin/activate.fish
-    else if type -q deactivate
-        deactivate
-    end
 end

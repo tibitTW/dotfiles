@@ -14,7 +14,6 @@
     "tabs": {
         "close_position": "left",
     },
-    "helix_mode": false,
     "outline_panel": {
         "dock": "left",
     },
@@ -26,7 +25,7 @@
         "dock": "left",
     },
     "profiles": {
-        "big_screen_mode": {
+        "big_screen": {
             "settings": {
                 "ui_font_size": 14,
                 "buffer_font_size": 14,
@@ -41,14 +40,13 @@
     // --------------------------- UI & appearance --------------------------- //
     // font
     "buffer_font_size": 12,
-    "agent_buffer_font_size": 10.0,
-    // "agent_ui_font_size": 14,
+    "agent_buffer_font_size": 12.0,
+    "agent_ui_font_size": 14.0,
     "ui_font_size": 12,
     "ui_font_family": "JetBrainsMono Nerd Font",
     "ui_font_weight": 600,
-    "buffer_line_height": "comfortable",
 
-    // // jetbrains settings
+    // jetbrains settings
     "buffer_font_family": "JetBrainsMono Nerd Font",
     "buffer_font_weight": 500,
     "buffer_font_features": {
@@ -68,20 +66,15 @@
     //     "zero": true,
     // },
 
-    // 0xProto settings
+    // // 0xProto settings
     // "buffer_font_family": "0xProto Nerd Font",
     // "buffer_font_features": {
     //     "ss01": true,
     // },
 
-    // markdown
-    "markdown_preview": {
-        // "font_family": "Libron",
-    },
-
     // ui
-    "icon_theme": "Monospace Icon Theme - Dark",
-    "theme": "Terafox - opaque",
+    "icon_theme": "Light Charmed Icons",
+    "theme": "Kanagawa Dragon",
     "tab_bar": {
         "show_nav_history_buttons": false,
     },
@@ -89,9 +82,9 @@
         "border_size": 1,
     },
     "scrollbar": {
-        // "diagnostics": "none",
         "git_diff": true,
-        "show": "auto",
+        "diagnostics": "error",
+        // "show": "always",
     },
     "soft_wrap": "editor_width",
     "show_whitespaces": "boundary",
@@ -109,30 +102,34 @@
         "enabled": true,
         "delay_ms": 100,
     },
-    "experimental.theme_overrides": {
-        "syntax": {
-            "comment": {
-                "font_style": "italic",
-            },
-            "keyword": {
-                "font_style": "italic",
-                "font_weight": 600,
-            },
-            "type": {
-                "font_weight": 600,
-            },
-            "variable.special": {
-                "font_style": "italic",
-                "font_weight": 600,
-            },
-        },
-        // "predictive": "#666", // change suggestion color
+    "cursor_shape": "underline",
+    "cursor_animation": {
+        "enabled": true,
+        "trail_opacity": 0.5,
     },
+    // "experimental.theme_overrides": {
+    //     "syntax": {
+    //         "comment": {
+    //             "font_style": "italic",
+    //         },
+    //         "keyword": {
+    //             "font_style": "italic",
+    //             "font_weight": 600,
+    //         },
+    //         "type": {
+    //             "font_weight": 600,
+    //         },
+    //         "variable.special": {
+    //             "font_style": "italic",
+    //             "font_weight": 600,
+    //         },
+    //     },
+    //     // "predictive": "#666", // change suggestion color
+    // },
     // ------------------------------ editor ------------------------------ //
     "vim_mode": true,
-    // "helix_mode": true,
-    // "relative_line_numbers": "enabled",
-    // "vertical_scroll_margin": 999, // keep cursor at center
+    "helix_mode": true,
+    "relative_line_numbers": "enabled",
     "tab_size": 4,
     "hard_tabs": false,
     "show_completions_on_input": true,
@@ -145,8 +142,7 @@
         "yaml": ["config"],
     },
     "format_on_save": "off",
-    "ensure_final_newline_on_save": false,
-    "remove_trailing_whitespace_on_save": false,
+    "ensure_final_newline_on_save": true,
     "languages": {
         "Python": {
             "show_edit_predictions": true,
@@ -199,8 +195,7 @@
             "hard_tabs": true,
         },
         "Markdown": {
-            // "show_edit_predictions": false,
-            // "format_on_save": "on"
+            "language_servers": ["marksman"],
         },
         "Typst": {
             "formatter": {
@@ -244,11 +239,6 @@
                 "settings": {
                     "showSyntaxErrors": true,
                     "lineLength": 88,
-                    "lint": {
-                        // "select": ["ALL"],
-                        // "extendSelect": ["I"],
-                        // "ignore": ["F401"]
-                    },
                 },
             },
         },
@@ -262,7 +252,6 @@
         },
         "ty": {
             "binary": {
-                // "path": ".venv/bin/ty",
                 "arguments": ["server"],
             },
         },
@@ -316,22 +305,31 @@
                     "paths": ["/home/mcsadmin/acsbridge_K25_CP"],
                 },
                 {
+                    "paths": [
+                        "/home/mcsadmin/acsbridge_K25_CP/Resource/secsgem",
+                    ],
+                },
+                {
                     "paths": ["/home/mcsadmin/tsc_8.31.12_CP"],
+                },
+                {
+                    "paths": ["/home/mcsadmin/tsc_8.31.12_CP/log"],
+                },
+                {
+                    "paths": ["/home/mcsadmin/tsc_8.31.12_FT"],
                 },
             ],
         },
     ],
     // ---------------------------- AI ---------------------------- //
     "edit_predictions": {
-        "open_ai_compatible_api": {
-            "api_url": "https://opencode.ai/zen/go/v1/chat/completions",
-            "model": "deepseek/deepseek-v4.1-flash",
-        },
-        "provider": "open_ai_compatible_api",
+        "provider": "zed",
         "mode": "eager",
-        "copilot": {
-            "proxy": null,
-            "proxy_no_verify": null,
+        "open_ai_compatible_api": {
+            "api_url": "https://openrouter.ai/api/v1/completions",
+            "model": "mistralai/codestral-2508",
+            "prompt_format": "codestral",
+            "max_output_tokens": 256,
         },
     },
     "show_edit_predictions": true,
@@ -354,17 +352,22 @@
         "dock": "right",
         "inline_assistant_model": {
             "provider": "opencode",
-            "model": "go/deepseek-v4.1-flash",
+            "model": "go/minimax-m3.1-flash",
             "enable_thinking": false,
         },
         "default_model": {
             "effort": "high",
-            "provider": "openrouter",
-            "model": "deepseek/deepseek-v4.1-flash",
+            "provider": "opencode",
+            "model": "go/minimax-m3.1-flash",
             "enable_thinking": true,
         },
         "favorite_models": [],
         "model_parameters": [],
+        "threads_sidebar": {
+            "position": "right",
+            "default_width": 300,
+            "auto_open": false,
+        },
     },
     "agent_servers": {
         "pi-acp": {
@@ -376,7 +379,7 @@
         },
         "claude-acp": {
             "default_config_options": {
-                "fast": false,
+                "fast": true,
             },
             "type": "registry",
         },
@@ -401,6 +404,8 @@
     "command_aliases": {
         "lsplg": "dev::OpenLanguageServerLogs",
         "lg": "zed::OpenLog",
+        "gg": "git_graph::Open",
+        "gb": "git::Blame",
     },
     "auto_install_extensions": {
         "dracula": true,

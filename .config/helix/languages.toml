@@ -14,6 +14,7 @@ indent = { tab-width = 4, unit = "    " }
 name = "python"
 language-servers = [ "ruff", "ty" ]
 auto-format = true
+formatter = { command = "ruff", args = ["format", "-"]}
 
 [language-server.ruff]
 command = "ruff"

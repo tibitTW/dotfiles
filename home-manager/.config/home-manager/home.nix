@@ -34,6 +34,15 @@ in
     pkgs.uv
     pkgs.rustup
     pkgs.home-manager
+    pkgs.go
+    pkgs.bun
+    pkgs.zvm
+    # 系統預設 node；專案需要其他版本時用 nvm 切換
+    pkgs.nodejs_24
     nvm
   ];
+
+  # 讓 ~/.nvm 下的 nvm.sh / nvm-exec 指向 nix 版 nvm（fish-nvm 與 nvm exec 都從 $NVM_DIR 讀）
+  home.file.".nvm/nvm.sh".source = "${nvm}/share/nvm/nvm.sh";
+  home.file.".nvm/nvm-exec".source = "${nvm}/share/nvm/nvm-exec";
 }

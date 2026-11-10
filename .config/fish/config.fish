@@ -15,10 +15,8 @@ if status is-login
         source "$HOME/.cargo/env.fish"
     end
 
-    set -gx ZVM_INSTALL "$HOME/.zvm/self"
-
+    # zvm 本體由 nix 提供，這裡只需要 zvm 安裝的 zig
     set PATH $PATH $HOME/.zvm/bin
-    set PATH $PATH $ZVM_INSTALL/
 
     # fundle plugin FabioAntunes/fish-nvm
     # fundle plugin edc/bass
@@ -49,7 +47,7 @@ if status is-interactive
     abbr -a pping prettyping
     abbr -a zlj zellij
 
-    alias vercel='vercel -t $VERCEL_KEY'
+    alias vercel='npx --yes vercel -t $VERCEL_KEY'
 
     # --- git alias --- #
     abbr -a ga 'git add'

@@ -6,9 +6,6 @@ tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git", truste
 # sketchybar
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
 
-# bm/beautiful mermaid cli
-tap "okooo5km/tap", trusted: true
-
 # 唯音輸入法
 tap "windwords/vchewing", trusted: true if OS.mac?
 
@@ -44,18 +41,12 @@ cask "fork"
 cask "gitbutler"
 
 # ===  開發語言與工具鏈  ===
-# TODO: use nix instead
+# go / bun / node / nvm / zvm 改由 nix (home-manager) 管理
 
-brew "go"
-tap "oven-sh/bun", trusted: true
-brew "oven-sh/bun/bun"
-brew "nvm"
 brew "sdkman/tap/sdkman-cli"
 brew "clang-format"
 brew "cmake"
 brew "shfmt"
-brew "vercel"
-brew "okooo5km/tap/bm", trusted: true
 brew "lima"
 brew "qemu"
 cask "xquartz"
